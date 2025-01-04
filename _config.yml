@@ -9,7 +9,7 @@
 title                    : "Yuang Wei"
 description              : "AI for Education"
 url                      : "https://philrainv.github.io"
-baseurl                  : "YuangWei_EN"  # 主域名仓库应为空
+baseurl                  : "/YuangWei_EN"  # 主域名仓库应为空
 repository               : "philrainv/YuangWei_EN"
 google_scholar_stats_use_cdn : false
 
