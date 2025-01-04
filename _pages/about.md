@@ -17,30 +17,30 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-我将博士毕业于中国上海的**华东师范大学**计算机科学与技术学院智能教育专业，我的导师是**江波**教授。目前我已发表 xx+ 篇学术论文
+I will graduate with a Ph.D. from the College of Computer Science and Technology, East China Normal University (ECNU) in Shanghai, China, specializing in Intelligent Education. My supervisor is Professor Bo Jiang. To date, I have published xx+ academic papers
  <a href='https://scholar.google.com.hk/citations?user=jjXw5-4AAAAJ&hl=zh-CN&oi=ao'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=引用"></a>。
 
-我的研究领域包括：
-- 智能教育
-- 因果模型
-- 知识追踪
-- 认知诊断
-- 大语言模型
-  
+My research areas include:  
+- AI for Education  
+- Causal Models  
+- Knowledge Tracing  
+- Cognitive Diagnosis  
+- Large Language Models  
+
 
 
 <span class='anchor' id='-xl'></span>
 
-# 🎓 教育经历
-- *2024.09 - 今*, <a href="https://ubiquitous.comp.nus.edu.sg/"><img class="png" src="/images/NUS_logo.png" width="23pt"></a> 新加坡国立大学，计算学院，新加坡，CSC博士 
-- *2022.06 - 今*, <a href="https://aiedu.ecnu.edu.cn/"><img class="png" src="/images/ECNU_logo.png" width="23pt"></a> 华东师范大学，计算机科学与技术学院，上海，博士 
-- *2015.09 - 2022.06*, <a href="https://dqgc.ncut.edu.cn/"><img class="png" src="/images/NCUT_logo.png" width="20pt"></a> 北方工业大学，电气与控制工程学院，北京，本硕
+# 🎓 Education
+- *2024.09 - now*, <a href="https://ubiquitous.comp.nus.edu.sg/"><img class="png" src="/images/NUS_logo.png" width="23pt"></a> National University of Singapore (NUS), School of Computing, Singapore, Ph.D. Candidate  
+- *2022.06 - now*, <a href="https://aiedu.ecnu.edu.cn/"><img class="png" src="/images/ECNU_logo.png" width="23pt"></a> East China Normal University (ECNU), College of Computer Science and Technology, Shanghai, Ph.D. Candidate  
+- *2015.09 - 2022.06*, <a href="https://dqgc.ncut.edu.cn/"><img class="png" src="/images/NCUT_logo.png" width="20pt"></a> North China University of Technology (NCUT), School of Electrical and Control Engineering, Beijing, B.Eng. & M.Eng.  
  
 <span class='anchor' id='-lwzl'></span>
 
-# 📝 论文专利
+# 📝 Journal Articles
 
-### 英文
+### En
 ---
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Sensors 2022</div><img src='images/sensors2022.svg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
@@ -56,14 +56,14 @@ redirect_from:
 [[网页]](https://dx.doi.org/10.3390/app15010154) [[预览]](https://github.com/) [[下载]](/pdf/)
 
 
-### 中文
+### CN
 ---
 
 - 	江波，丁莹雯，`魏雨昂`. 可解释学习者模型:可信个性化学习的技术关键. *现代远程教育研究*. 2023.  
 [[网页]](https://dx.doi.org/10.15881/j.cnki.cn33-1304/g4.2023.02.005) [[预览]](https://github.com/) [[下载]](/pdf/)  
 
 
-### 专利
+### Patent
 ---
 - xx, `xx`. xxx. [[网页]](https://cprs.patentstar.com)
 
@@ -71,7 +71,7 @@ redirect_from:
 
 <span class='anchor' id='-ryjx'></span>
 
-# 🏅 荣誉奖项
+# 🏅 Awards
 - *2024* “创青春”中国青年创新创业大赛（科技创新）  `全国铜奖`
 - *2023* “创青春”中国青年创新创业大赛（科技创新）  `优秀奖`
 - *2023* “创青春”中国青年创新创业大赛（数字经济）  `全国铜奖`
@@ -82,12 +82,12 @@ redirect_from:
 
 <span class='anchor' id='-xshy'></span>
 
-# 🏛️ 学术会议
+# 🏛️ Conference Papers
 - `Wei Yuang`，Xu Jining，Zhang Zehua，Li Zhijun. A Review of the Research on the Prediction of Learning Outcomes in the Field of Learning Analytics, 2021 5th International Conference on Education and Multimedia Technology (ICEMT), 2021.
 
 
 <span class='anchor' id='-gzsx'></span>
 
-# 💻 工作实习
+# 💻 Work Experience
 - *2021.06 - 2021.12*, 互联网教育智能技术及应用国家工程实验室, 北京
 
