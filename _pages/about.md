@@ -18,7 +18,7 @@ redirect_from:
 <span class='anchor' id='about-me'></span>
 
 I will graduate with a Ph.D. from the College of Computer Science and Technology, East China Normal University (ECNU) in Shanghai, China, specializing in Intelligent Education. My supervisor is Professor Bo Jiang. To date, I have published 15+ academic papers
- <a href='https://scholar.google.com.hk/citations?user=jjXw5-4AAAAJ&hl=zh-CN&oi=ao'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=引用"></a>. I serve as a reviewer for the journals *Education and Information Technologies*, *Information Processing and Management*, *Applied Intelligence*, and conferences including *NeurIPS*, *AAAI*, *KDD*, *ICASSP*, *AIED*, and *EDM*.
+ <a href='https://scholar.google.com.hk/citations?user=jjXw5-4AAAAJ&hl=zh-CN&oi=ao'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=cite"></a>. I serve as a reviewer for the journals *Education and Information Technologies*, *Information Processing and Management*, *Applied Intelligence*, and conferences including *NeurIPS*, *AAAI*, *KDD*, *ICASSP*, *AIED*, and *EDM*.
 If you are interested in my research, please feel free to contact me! Let's collaborate and publish papers together!
 
 My research areas include:  
