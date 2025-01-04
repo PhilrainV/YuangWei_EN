@@ -38,7 +38,7 @@ My research areas include:
  
 <span class='anchor' id='-lwzl'></span>
 
-# 📝 Journal Articles
+# 📝 Journal Papers
 
 ### En
 ---
