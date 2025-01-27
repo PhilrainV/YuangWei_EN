@@ -109,6 +109,14 @@ My research areas include:
 <span class='anchor' id='xshy'></span>
 
 # 🏛️ Conference Papers
+---
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">COLING 2025</div><img src='images/TMATH.PNG' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+  
+-	Changyong Qi; `Yuang Wei(Co-first authors)`. TMATH: A Dataset for Evaluating Large Language Models in Generating Educational Hints for Math Word Problems. *In Proceedings of the 31st International Conference on Computational Linguistics*, 2025. [[网页]](https://aclanthology.org/2025.coling-main.340/) [[下载]](https://github.com/PhilrainV/research-paper)
+</div>
+</div>
+
 - Yuan-Hao Jiang, Ruijia Li, `Yuang Wei`, Rui Jia, Xiaobao Shao, Hanglei Hu, Bo Jiang. Synchronizing Verbal Responses and Board Writing for Multimodal Math Instruction with LLMs. *The 4th Workshop on Mathematical Reasoning and AI at NeurIPS'24*. 2024
 - `Wei Yuang`，Yizhou Zhou，Yuan-Hao Jiang，Bo Jiang. Enhancing Explainability of Knowledge Learning Paths: Causal Knowledge Networks. *The 17th International Conference on Educational Data Mining (EDM)*. 2024.
 - `Wei Yuang`，Xu Jining，Zhang Zehua，Li Zhijun. A Review of the Research on the Prediction of Learning Outcomes in the Field of Learning Analytics, *The 5th International Conference on Education and Multimedia Technology (ICEMT)*, 2021.
