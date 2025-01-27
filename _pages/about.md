@@ -110,7 +110,7 @@ My research areas include:
 
 # 🏛️ Conference Papers
 ---
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">COLING 2025</div><img src='images/TMATH.PNG' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">COLING 2025</div><img src='images/TMATH.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
   
 -	Changyong Qi; `Yuang Wei(Co-first authors)`. TMATH: A Dataset for Evaluating Large Language Models in Generating Educational Hints for Math Word Problems. *In Proceedings of the 31st International Conference on Computational Linguistics*, 2025. [[网页]](https://aclanthology.org/2025.coling-main.340/) [[下载]](https://github.com/PhilrainV/research-paper)
