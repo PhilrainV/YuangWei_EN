@@ -47,7 +47,7 @@ My research areas include:
 <div class='paper-box-text' markdown="1">
 
 -	`Yuang Wei`, Bo Jiang. Interpretable Cognitive State Prediction via Temporal Fuzzy Cognitive Map. *IEEE Transactions on Learning Technologies*, 2024. 
-[[网页]](https://dx.doi.org/10.1109/TLT.2023.3307565) [[预览]](https://github.com/) [[下载]](/pdf/)
+[[Web]](https://dx.doi.org/10.1109/TLT.2023.3307565) [[PDF]](https://github.com/PhilrainV/research-paper)
 
 </div>
 </div>
@@ -56,31 +56,31 @@ My research areas include:
 <div class='paper-box-text' markdown="1">
 
 -	Bo Jiang; `Yuang Wei(Corr. Author)`; Ting Zhang; Wei Zhang. Improving the performance and explainability of knowledge tracing via Markov blanket. *Information Processing & Management*, 2024. 
-[[网页]](https://doi.org/10.1016/j.ipm.2023.103620) [[预览]](https://github.com/) [[下载]](/pdf/)
+[[Web]](https://doi.org/10.1016/j.ipm.2023.103620) [[PDF]](https://github.com/PhilrainV/research-paper)
 
 </div>
 </div>
 
 
 - Changyong Qi, Longwei Zheng, `Yuang Wei`, Haoxin Xu, Peiji Chen, Xiaoqing Gu. EduDCM: A Novel Framework for Automatic Educational Dialogue Classification Dataset Construction via Distant Supervision and Large Language Models. *Applied Sciences*. 2024. 
-[[网页]](https://doi.org/10.3390/app15010154) [[预览]](https://github.com/) [[下载]](/pdf/)
+[[Web]](https://doi.org/10.3390/app15010154) [[PDF]](https://github.com/PhilrainV/research-paper)
 
-- Jiayi Liu (刘嘉怡); Bo Jiang (江波); `Yu’ang Wei (魏雨昂)`. LLMs as Promising Personalized Teaching Assistants: How Do They Ease Teaching Work?. *ECNU Review of Education*. 2024. [[网页]](https://doi.org/10.1177/20965311241305138) [[预览]](https://github.com/) [[下载]](/pdf/)
+- Jiayi Liu (刘嘉怡); Bo Jiang (江波); `Yu’ang Wei (魏雨昂)`. LLMs as Promising Personalized Teaching Assistants: How Do They Ease Teaching Work?. *ECNU Review of Education*. 2024. [[Web]](https://doi.org/10.1177/20965311241305138) [[PDF]](https://github.com/PhilrainV/research-paper)
 
-- Bo Jiang; `Yuang Wei`; Meijun Gu; Chengjiu Yin. Understanding students’ backtracking behaviors in digital textbooks: a data-driven perspective. *Interactive Learning Environments*. 2024. [[网页]](https://doi.org/10.1080/10494820.2023.2280964) [[预览]](https://github.com/) [[下载]](/pdf/)
+- Bo Jiang; `Yuang Wei`; Meijun Gu; Chengjiu Yin. Understanding students’ backtracking behaviors in digital textbooks: a data-driven perspective. *Interactive Learning Environments*. 2024. [[Web]](https://doi.org/10.1080/10494820.2023.2280964) [[PDF]](https://github.com/PhilrainV/research-paper)
 
-- TianYi Liu; Yuan-Hao Jiang; `Yuang Wei(Co-Author)`; Xun Wang; Shucheng Huang; Ling Dai. Educational Practices and Algorithmic Framework for Promoting Sustainable Development in Education by Identifying Real-World Learning Paths. *Sustainability*. 2024. [[网页]](https://doi.org/10.3390/su16166871) [[预览]](https://github.com/) [[下载]](/pdf/)
+- TianYi Liu; Yuan-Hao Jiang; `Yuang Wei(Co-Author)`; Xun Wang; Shucheng Huang; Ling Dai. Educational Practices and Algorithmic Framework for Promoting Sustainable Development in Education by Identifying Real-World Learning Paths. *Sustainability*. 2024. [[Web]](https://doi.org/10.3390/su16166871) [[PDF]](https://github.com/PhilrainV/research-paper)
 
 
 
 ### CN
 ---
 
-- 江波，章恒远，`魏雨昂`. 如何判定自适应学习系统的有效性——基于因果结构分析框架. *现代远程教育研究*. 2023.  [[网页]](https://doi.org/10.3969/j.issn.1009-5195.2023.02.011) [[预览]](https://github.com/) [[下载]](/pdf/)
+- 江波，章恒远，`魏雨昂`. 如何判定自适应学习系统的有效性——基于因果结构分析框架. *现代远程教育研究*. 2023.  [[Web]](https://doi.org/10.3969/j.issn.1009-5195.2023.02.011) [[PDF]](https://github.com/PhilrainV/research-paper)
 - 江波，丁莹雯，`魏雨昂`. 可解释学习者模型:可信个性化学习的技术关键. *现代远程教育研究*. 2023.  
-[[网页]](https://doi.org/10.15881/j.cnki.cn33-1304/g4.2023.02.005) [[预览]](https://github.com/) [[下载]](/pdf/)
+[[Web]](https://doi.org/10.15881/j.cnki.cn33-1304/g4.2023.02.005) [[PDF]](https://github.com/PhilrainV/research-paper)
 - 江波，丁莹雯，`魏雨昂`. 教育数字化转型的核心技术引擎：可信教育人工智能. *华东师范大学学报(教育科学版)*. 2023.  
-[[网页]](https://doi.org/10.16382/j.cnki.1000-5560.2023.03.006) [[预览]](https://github.com/) [[下载]](/pdf/)
+[[Web]](https://doi.org/10.16382/j.cnki.1000-5560.2023.03.006) [[PDF]](https://github.com/PhilrainV/research-paper)
 
 
 ### Patent
@@ -113,13 +113,13 @@ My research areas include:
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">COLING 2025</div><img src='images/TMATH.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
   
--	Changyong Qi; `Yuang Wei(Co-first authors)`. TMATH: A Dataset for Evaluating Large Language Models in Generating Educational Hints for Math Word Problems. *In Proceedings of the 31st International Conference on Computational Linguistics*, 2025. [[网页]](https://aclanthology.org/2025.coling-main.340/) [[下载]](https://github.com/PhilrainV/research-paper)
+-	Changyong Qi; `Yuang Wei(Co-first authors)`. TMATH: A Dataset for Evaluating Large Language Models in Generating Educational Hints for Math Word Problems. *In Proceedings of the 31st International Conference on Computational Linguistics*, 2025. [[Web]](https://aclanthology.org/2025.coling-main.340/) [[PDF]](https://github.com/PhilrainV/research-paper)
 </div>
 </div>
 
-- Yuan-Hao Jiang, Ruijia Li, `Yuang Wei`, Rui Jia, Xiaobao Shao, Hanglei Hu, Bo Jiang. Synchronizing Verbal Responses and Board Writing for Multimodal Math Instruction with LLMs. *The 4th Workshop on Mathematical Reasoning and AI at NeurIPS'24*. 2024
+- Yuan-Hao Jiang, Ruijia Li, `Yuang Wei`, Rui Jia, Xiaobao Shao, Hanglei Hu, Bo Jiang. Synchronizing Verbal Responses and Board Writing for Multimodal Math Instruction with LLMs. *The 4th Workshop on Mathematical Reasoning and AI at NeurIPS'24*. 2024. [[PDF]](https://github.com/PhilrainV/research-paper)
 - `Wei Yuang`，Yizhou Zhou，Yuan-Hao Jiang，Bo Jiang. Enhancing Explainability of Knowledge Learning Paths: Causal Knowledge Networks. *The 17th International Conference on Educational Data Mining (EDM)*. 2024.
-- `Wei Yuang`，Xu Jining，Zhang Zehua，Li Zhijun. A Review of the Research on the Prediction of Learning Outcomes in the Field of Learning Analytics, *The 5th International Conference on Education and Multimedia Technology (ICEMT)*, 2021.
+- `Wei Yuang`，Xu Jining，Zhang Zehua，Li Zhijun. A Review of the Research on the Prediction of Learning Outcomes in the Field of Learning Analytics, *The 5th International Conference on Education and Multimedia Technology (ICEMT)*, 2021. [[PDF]](https://github.com/PhilrainV/research-paper)
 
 
 <span class='anchor' id='-gzsx'></span>
