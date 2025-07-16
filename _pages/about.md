@@ -117,6 +117,9 @@ My research areas include:
 </div>
 </div>
 
+- `Yuang Wei`, Yuan-Hao Jiang, Jiayi Liu, Changyong Qi, Linzhao Jia, Rui Jia. The Advancement of Personalized Learning Potentially Accelerated by Generative AI. Society for Information Technology & Teacher Education International Conference. 2025. [[PDF]](https://github.com/PhilrainV/research-paper)
+- Yuan-Hao Jiang, `Yuang Wei(Corr. Author)`, Xiaobao Shao, Rui Jia, Yizhou Zhou, Zi-Wei Chen. Generative AI in Personalized Learning: Development Trajectory, Educational Applications, and Future Education. Society for Information Technology & Teacher Education International Conference. 2025. [[PDF]](https://github.com/PhilrainV/research-paper)
+- Linzhao Jia, Han Sun, `Yuang Wei`, Changyong Qi, Xiaozhe Yang. EPIC: Error Pattern Informed Correction for Classroom ASR with Limited Labeled Data. ICASSP 2025-2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). 2025. [[PDF]](https://github.com/PhilrainV/research-paper)
 - Yuan-Hao Jiang, Ruijia Li, `Yuang Wei`, Rui Jia, Xiaobao Shao, Hanglei Hu, Bo Jiang. Synchronizing Verbal Responses and Board Writing for Multimodal Math Instruction with LLMs. *The 4th Workshop on Mathematical Reasoning and AI at NeurIPS'24*. 2024. [[PDF]](https://github.com/PhilrainV/research-paper)
 - `Wei Yuang`，Yizhou Zhou，Yuan-Hao Jiang，Bo Jiang. Enhancing Explainability of Knowledge Learning Paths: Causal Knowledge Networks. *The 17th International Conference on Educational Data Mining (EDM)*. 2024.
 - `Wei Yuang`，Xu Jining，Zhang Zehua，Li Zhijun. A Review of the Research on the Prediction of Learning Outcomes in the Field of Learning Analytics, *The 5th International Conference on Education and Multimedia Technology (ICEMT)*, 2021. [[PDF]](https://github.com/PhilrainV/research-paper)
