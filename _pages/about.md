@@ -33,8 +33,8 @@ My research areas include:
 <span class='anchor' id='xl'></span>
 
 # 🎓 Education
-- *2024.09 - now*, <a href="https://ubiquitous.comp.nus.edu.sg/"><img class="png" src="/images/NUS_logo.png" width="23pt"></a> National University of Singapore (NUS), School of Computing, Singapore, Ph.D. Candidate  
-- *2022.06 - now*, <a href="https://aiedu.ecnu.edu.cn/"><img class="png" src="/images/ECNU_logo.png" width="23pt"></a> East China Normal University (ECNU), College of Computer Science and Technology, Shanghai, Ph.D. Candidate  
+- *2024.09 - now*, <a href="https://ubiquitous.comp.nus.edu.sg/"><img class="png" src="/images/NUS_logo.png" width="23pt"></a> National University of Singapore (NUS), School of Computing, Singapore, Ph.D. Candidate (Supervisor: [[Brian Lim]](https://ubiquitous.comp.nus.edu.sg/))  
+- *2022.06 - now*, <a href="https://aiedu.ecnu.edu.cn/"><img class="png" src="/images/ECNU_logo.png" width="23pt"></a> East China Normal University (ECNU), College of Computer Science and Technology, Shanghai, Ph.D. Candidate (Supervisor: [[Bo Jiang]](https://faculty.ecnu.edu.cn/_s8/jb2/main.psp))
 - *2015.09 - 2022.06*, <a href="https://dqgc.ncut.edu.cn/"><img class="png" src="/images/NCUT_logo.png" width="20pt"></a> North China University of Technology (NCUT), School of Electrical and Control Engineering, Beijing, B.Eng. & M.Eng.  
  
 <span class='anchor' id='lwzl'></span>
