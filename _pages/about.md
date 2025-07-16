@@ -91,8 +91,10 @@ My research areas include:
 - A hierarchical evaluation method and device based on the one-parameter item response theory model. CN112862368A. 2021.  
 
 ### Book
-- `Yuang Wei`. Gobal Artificial Intelligent Education Support Environment White Paper for K-12. *Beijing Normal University (BNU)*. 2021.
+- Bo Jiang, `Yuang Wei`. Toward Trustworthy Adaptive Learning: Explainable Learner Models. Taylor & Francis. 2025. [[下载]](http://doi.org/10.4324/9781003585176)
 - `Yuang Wei`, Changyong Qi, Yuan-Hao Jiang, Ling Dai. Enhancing Educational Practices: Strategies for Assessing and Improving Learning Outcomes. *Nova Science Publishers*, New York, US. 2024.
+- `Yuang Wei`. Gobal Artificial Intelligent Education Support Environment White Paper for K-12. *Beijing Normal University (BNU)*. 2021.
+
 
 <span class='anchor' id='ryjx'></span>
 
