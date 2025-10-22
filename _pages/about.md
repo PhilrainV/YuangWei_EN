@@ -34,8 +34,8 @@ My research areas include:
 <span class='anchor' id='xl'></span>
 
 # 🎓 Education
-- *2024.09 - now*, <a href="https://ubiquitous.comp.nus.edu.sg/"><img class="png" src="/images/NUS_logo.png" width="23pt"></a> National University of Singapore (NUS), School of Computing, Singapore, Ph.D. Candidate (Supervisor: [[Brian Lim]](https://ubiquitous.comp.nus.edu.sg/))  
 - *2022.06 - now*, <a href="https://aiedu.ecnu.edu.cn/"><img class="png" src="/images/ECNU_logo.png" width="23pt"></a> East China Normal University (ECNU), College of Computer Science and Technology, Shanghai, Ph.D. Candidate (Supervisor: [[Bo Jiang]](https://faculty.ecnu.edu.cn/_s8/jb2/main.psp))
+- *2024.09 - 2024.09*, <a href="https://ubiquitous.comp.nus.edu.sg/"><img class="png" src="/images/NUS_logo.png" width="23pt"></a> National University of Singapore (NUS), Department of Computer Science, Singapore, Ph.D. Candidate (Supervisor: [[Brian Lim]](https://ubiquitous.comp.nus.edu.sg/))  
 - *2015.09 - 2022.06*, <a href="https://dqgc.ncut.edu.cn/"><img class="png" src="/images/NCUT_logo.png" width="20pt"></a> North China University of Technology (NCUT), School of Electrical and Control Engineering, Beijing, B.Eng. & M.Eng.  
  
 <span class='anchor' id='lwzl'></span>
@@ -148,5 +148,6 @@ My research areas include:
 - *2023* The 27th Global Chinese Conference on Computers in Education (GCCCE 2023), Beijing, Program Committee Member
 - *2023.12 - 2024.05*, Nova Science Publishers, New York, US, Invited Editor  
 - *2021.06 - 2021.12*, National Engineering Laboratory for Intelligent Technology and Applications of Internet Education, Beijing, Research Assistant  
+
 
 
