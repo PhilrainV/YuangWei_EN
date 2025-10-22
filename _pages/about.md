@@ -23,7 +23,8 @@ If you are interested in my research, please feel free to contact me! Let's coll
 
 My research areas include:  
 - AI for Education  
-- Causal Models  
+- Causal Models
+- Explainable AI 
 - Knowledge Tracing  
 - Cognitive Diagnosis  
 - Large Language Models  
@@ -61,6 +62,7 @@ My research areas include:
 </div>
 </div>
 
+- Angxuan Chen, `Yuang Wei(Corr. Author)`, Huixiao Le, Yan Zhang. Learning by teaching with ChatGPT: The effect of teachable ChatGPT agent on programming education. *British Journal of Educational Technology*, 2025. [[Web]](https://doi.org/10.1111/bjet.70001) [[PDF]](https://github.com/PhilrainV/research-paper)
 
 - Changyong Qi, Longwei Zheng, `Yuang Wei`, Haoxin Xu, Peiji Chen, Xiaoqing Gu. EduDCM: A Novel Framework for Automatic Educational Dialogue Classification Dataset Construction via Distant Supervision and Large Language Models. *Applied Sciences*. 2024. 
 [[Web]](https://doi.org/10.3390/app15010154) [[PDF]](https://github.com/PhilrainV/research-paper)
@@ -91,21 +93,33 @@ My research areas include:
 - A hierarchical evaluation method and device based on the one-parameter item response theory model. CN112862368A. 2021.  
 
 ### Book
+---
 - Bo Jiang, `Yuang Wei`. Toward Trustworthy Adaptive Learning: Explainable Learner Models. Taylor & Francis. 2025. [[下载]](http://doi.org/10.4324/9781003585176)
 - `Yuang Wei`, Changyong Qi, Yuan-Hao Jiang, Ling Dai. Enhancing Educational Practices: Strategies for Assessing and Improving Learning Outcomes. *Nova Science Publishers*, New York, US. 2024.
 - `Yuang Wei`. Gobal Artificial Intelligent Education Support Environment White Paper for K-12. *Beijing Normal University (BNU)*. 2021.
+
+
+### Software
+---
+- A conversational mathematics teaching software driven by large language models. Registration number 2025SR0248270
+- An automated platform for generating cross-modal mathematical problem-solving explanation resources. Registration number 2025SR0248269.
+- A Reliable Learner’s Fuzzy Cognitive State Evaluation and Prediction System, Registration number: 2024SR0062350.
+- A human-computer interaction learning platform driven by an intelligent agent based on large language model. Registration number 2024SR0764118.
+- Intelligent learning system (management end). Registration number: 2021SR0437246.
+- Intelligent learning system (user end). Registration number: 2021SR0437230.
 
 
 <span class='anchor' id='ryjx'></span>
 
 # 🏅 Awards
 ---
+- *2025* National Scholarship, China
 - *2024* "Chuang Qingchun" China Youth Innovation and Entrepreneurship Competition (Technological Innovation)  `National Bronze Award`  
 - *2023* "Chuang Qingchun" China Youth Innovation and Entrepreneurship Competition (Technological Innovation)  `Excellence Award`  
 - *2023* "Chuang Qingchun" China Youth Innovation and Entrepreneurship Competition (Digital Economy)  `National Bronze Award`  
 - *2019* China Intelligent Robot Competition - Deep Learning Intelligent Vehicle Project  `National First Prize`  
 - *2019* China Intelligent Robot Competition - Autonomous Driving Intelligent Vehicle Project  `National First Prize`  
-- *2018* National Inspirational Scholarship  
+- *2018* National Inspirational Scholarship, China  
 - *2017* Siemens Industrial Intelligence Challenge (Industrial Internet)  `National First Prize`  
 
 <span class='anchor' id='xshy'></span>
@@ -134,4 +148,5 @@ My research areas include:
 - *2023* The 27th Global Chinese Conference on Computers in Education (GCCCE 2023), Beijing, Program Committee Member
 - *2023.12 - 2024.05*, Nova Science Publishers, New York, US, Invited Editor  
 - *2021.06 - 2021.12*, National Engineering Laboratory for Intelligent Technology and Applications of Internet Education, Beijing, Research Assistant  
+
 
