@@ -24,7 +24,7 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 # Site Author
 author:
   name             : "Yuang Wei"
-  avatar           : "images/weiyuang.jpg"
+  avatar           : "images/weiyuang2.png"
   bio              : "East China Normal University"
   location         : "Shanghai"
   employer         : 
@@ -163,3 +163,4 @@ compress_html:
   clippings: all
   ignore:
     envs: development
+
