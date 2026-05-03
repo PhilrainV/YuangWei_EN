@@ -129,7 +129,7 @@ My research areas include:
 
 # 🏛️ Conference Papers
 ---
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">AIED 2026</div><img src='images/AIED2026.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">AIED 2026</div><img src='https://raw.githubusercontent.com/PhilrainV/PhilrainV.github.io/master/images/AIED2026.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 -	`Yuang Wei`, Ruijia Li, Bo Jiang. SLOW: Strategic Logical-inference Open Workspace for Real-time Cognitive Adaptation in AI Tutoring. *The 27th International Conference on Artificial Intelligence in Education*, 2026. 
@@ -138,7 +138,7 @@ My research areas include:
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CHI 2026</div><img src='images/XIA all.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CHI 2026</div><img src='https://raw.githubusercontent.com/PhilrainV/PhilrainV.github.io/master/images/XIA all.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 -	`Yuang Wei`, Fei Wang, Yifan Zhang, Brian Lim, Bo Jiang. Beyond Scores: Explainable Intelligent Assessment Strengthens Pre-service Teachers’ Assessment Literacy. *Proceedings of the 2026 CHI Conference on Human
