@@ -148,13 +148,7 @@ Factors in Computing Systems*, 2026.
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">COLING 2025</div><img src='images/TMATH.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
-  
 -	Changyong Qi; `Yuang Wei(Co-first authors)`. TMATH: A Dataset for Evaluating Large Language Models in Generating Educational Hints for Math Word Problems. *In Proceedings of the 31st International Conference on Computational Linguistics*, 2025. [[Web]](https://aclanthology.org/2025.coling-main.340/) [[PDF]](https://github.com/PhilrainV/research-paper)
-</div>
-</div>
-
 - `Yuang Wei`, Yuan-Hao Jiang, Jiayi Liu, Changyong Qi, Linzhao Jia, Rui Jia. The Advancement of Personalized Learning Potentially Accelerated by Generative AI. Society for Information Technology & Teacher Education International Conference. 2025. [[PDF]](https://github.com/PhilrainV/research-paper)
 - Yuan-Hao Jiang, `Yuang Wei(Corr. Author)`, Xiaobao Shao, Rui Jia, Yizhou Zhou, Zi-Wei Chen. Generative AI in Personalized Learning: Development Trajectory, Educational Applications, and Future Education. Society for Information Technology & Teacher Education International Conference. 2025. [[PDF]](https://github.com/PhilrainV/research-paper)
 - Linzhao Jia, Han Sun, `Yuang Wei`, Changyong Qi, Xiaozhe Yang. EPIC: Error Pattern Informed Correction for Classroom ASR with Limited Labeled Data. ICASSP 2025-2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). 2025. [[PDF]](https://github.com/PhilrainV/research-paper)
