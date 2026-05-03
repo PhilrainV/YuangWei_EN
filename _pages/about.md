@@ -18,7 +18,7 @@ redirect_from:
 <span class='anchor' id='about-me'></span>
 
 # About Me
-I will graduate with a Ph.D. from the College of Computer Science and Technology, East China Normal University (ECNU) in Shanghai, China, specializing in Intelligent Education. My supervisor is Professor Bo Jiang. To date, I have published 15+ academic papers <a href='https://scholar.google.com.hk/citations?user=jjXw5-4AAAAJ&hl=zh-CN&oi=ao'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=cite"></a>. I serve as a reviewer for the journals *Education and Information Technologies*, *Information Processing and Management*, *Applied Intelligence*, and conferences including *NeurIPS*, *AAAI*, *KDD*, *ICASSP*, *AIED*, and *EDM*.
+I will graduate with a Ph.D. from the College of Computer Science and Technology, East China Normal University (ECNU) in Shanghai, China, specializing in Intelligent Education. My supervisor is Professor Bo Jiang. To date, I have published 20+ academic papers <a href='https://scholar.google.com.hk/citations?user=jjXw5-4AAAAJ&hl=zh-CN&oi=ao'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=cite"></a>. I serve as a reviewer for the journals *Education and Information Technologies*, *Information Processing and Management*, *Applied Intelligence*, and conferences including *NeurIPS*, *AAAI*, *KDD*, *ICASSP*, *AIED*, and *EDM*.
 If you are interested in my research, please feel free to contact me! Let's collaborate and publish papers together!
 
 My research areas include:  
@@ -78,15 +78,18 @@ My research areas include:
 ### CN
 ---
 
-- 江波，章恒远，`魏雨昂`. 如何判定自适应学习系统的有效性——基于因果结构分析框架. *现代远程教育研究*. 2023.  [[Web]](https://doi.org/10.3969/j.issn.1009-5195.2023.02.011) [[PDF]](https://github.com/PhilrainV/research-paper)
+- 蒋晨程，`魏雨昂`，吴丽朦. 以生成式 AI 赋能个性化学习:机理、变革与趋势 *江苏高教*. 2025.  [[网页]](https://doi.org/10.13236/j.cnki.jshe.2025.12.008) [[下载]](https://github.com/PhilrainV/research-paper)
+- 江波，章恒远，`魏雨昂`. 如何判定自适应学习系统的有效性——基于因果结构分析框架. *现代远程教育研究*. 2023.  [[网页]](https://doi.org/10.3969/j.issn.1009-5195.2023.02.011) [[下载]](https://github.com/PhilrainV/research-paper)
 - 江波，丁莹雯，`魏雨昂`. 可解释学习者模型:可信个性化学习的技术关键. *现代远程教育研究*. 2023.  
-[[Web]](https://doi.org/10.15881/j.cnki.cn33-1304/g4.2023.02.005) [[PDF]](https://github.com/PhilrainV/research-paper)
+[[网页]](https://doi.org/10.15881/j.cnki.cn33-1304/g4.2023.02.005) [[下载]](https://github.com/PhilrainV/research-paper)
 - 江波，丁莹雯，`魏雨昂`. 教育数字化转型的核心技术引擎：可信教育人工智能. *华东师范大学学报(教育科学版)*. 2023.  
-[[Web]](https://doi.org/10.16382/j.cnki.1000-5560.2023.03.006) [[PDF]](https://github.com/PhilrainV/research-paper)
+[[网页]](https://doi.org/10.16382/j.cnki.1000-5560.2023.03.006) [[下载]](https://github.com/PhilrainV/research-paper)
 
 
 ### Patent
 ---
+- An Explainable Knowledge Tracing Method Optimized by Markov Blanket. CN120180037A. 2025.
+- A Blackboard-Generation-Driven Method, Device, and System for Multimodal Dialogic Tutoring Content Generation. CN120124641A. 2025.
 - A structured competency model construction method for learning analytics and assessment. CN112926901B. 2023.  
 - A Bayes competency evaluation algorithm considering item difficulty attributes. CN114065833A. 2022.  
 - A structured competency model construction method for learning analytics and assessment. CN112926901A. 2021.  
@@ -126,6 +129,25 @@ My research areas include:
 
 # 🏛️ Conference Papers
 ---
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">AIED 2026</div><img src='images/AIED2026.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+-	`Yuang Wei`, Ruijia Li, Bo Jiang. SLOW: Strategic Logical-inference Open Workspace for Real-time Cognitive Adaptation in AI Tutoring. *The 27th International Conference on Artificial Intelligence in Education*, 2026. 
+[[Web]](https://arxiv.org/abs/2603.28062) [[PDF]](https://github.com/PhilrainV/research-paper)
+
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CHI 2026</div><img src='images/XIA all.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+-	`Yuang Wei`, Fei Wang, Yifan Zhang, Brian Lim, Bo Jiang. Beyond Scores: Explainable Intelligent Assessment Strengthens Pre-service Teachers’ Assessment Literacy. *Proceedings of the 2026 CHI Conference on Human
+Factors in Computing Systems*, 2026. 
+[[Web]](https://dl.acm.org/doi/abs/10.1145/3772318.3791230) [[PDF]](https://github.com/PhilrainV/research-paper)
+
+</div>
+</div>
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">COLING 2025</div><img src='images/TMATH.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
   
