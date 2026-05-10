@@ -44,6 +44,15 @@ My research areas include:
 
 ### En
 ---
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ACM TIST 2026</div><img src='https://raw.githubusercontent.com/PhilrainV/PhilrainV.github.io/master/images/TIST2026.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+-	`Yuang Wei`, Yuan-Hao Jiang, Changyong Qi, Wei Zhang, Bo Jiang. Interpretable Structure Learning for Knowledge Components in Education. *ACM Transactions on Intelligent Systems and Technology*, 2026. 
+[[Web]](https://doi.org/10.1145/3815188) [[PDF]](https://github.com/PhilrainV/research-paper)
+
+</div>
+</div>
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">IEEE TLT 2024</div><img src='images/TLT.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
