@@ -125,6 +125,7 @@ My research areas include:
 
 # 🏅 Awards
 ---
+- *2026* Outstanding Graduate of Shanghai, China
 - *2025* National Scholarship, China
 - *2024* "Chuang Qingchun" China Youth Innovation and Entrepreneurship Competition (Technological Innovation)  `National Bronze Award`  
 - *2023* "Chuang Qingchun" China Youth Innovation and Entrepreneurship Competition (Technological Innovation)  `Excellence Award`  
