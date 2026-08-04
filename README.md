@@ -7,13 +7,14 @@ Live site: <https://philrainv.github.io/YuangWei_EN/>
 Edit the small files in `content/`:
 
 - `content/publications.js`: publications
+- `content/profile.js`: bio, research interests, email, affiliation, portrait, and academic links
 - `content/books.js`: books
 - `content/patents.js`: patents
 - `content/software-copyrights.js`: software copyrights
 - `content/honors.js`: honors and awards
 - `content/experience.js`: professional experience
 
-Commit the change to `master`; the live homepage reads these files directly and does not require a rebuild. See [content/README.md](content/README.md) for field descriptions and an example.
+Commit the change to `master`; the live homepage reads these files directly and does not require a rebuild. See [content/README.md](content/README.md) for profile fields, field descriptions, and an example.
 
 For a new publication image, upload it to `images/` and add `image: "images/filename"` to the publication entry.
 

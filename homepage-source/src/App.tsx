@@ -16,13 +16,12 @@ import {
   experience,
   honors,
   patents,
+  profile,
   publications,
   softwareCopyrights,
   type PublicationGroup,
 } from "./content";
 
-const scholarUrl =
-  "https://scholar.google.com/citations?user=jjXw5-4AAAAJ&hl=en";
 const visitorApiUrl =
   "https://yuang-wei-academic.philrain-cs.chatgpt.site/api/visitors";
 const scholarStatsUrl =
@@ -36,15 +35,6 @@ const navigation = [
   ["Honors", "honors"],
   ["Experience", "experience"],
 ] as const;
-
-const interests = [
-  "AI in Education",
-  "Explainable AI",
-  "Causal Models",
-  "Knowledge Tracing",
-  "Cognitive Diagnosis",
-  "Large Language Models",
-];
 
 type VisitorCountry = {
   code: string;
@@ -307,12 +297,11 @@ export default function Home() {
   }, [paperFilter]);
 
   async function copyEmail() {
-    const email = "philrain@foxmail.com";
     try {
-      await navigator.clipboard.writeText(email);
+      await navigator.clipboard.writeText(profile.email);
     } catch {
       const helper = document.createElement("textarea");
-      helper.value = email;
+      helper.value = profile.email;
       helper.style.position = "fixed";
       helper.style.opacity = "0";
       document.body.appendChild(helper);
@@ -329,7 +318,7 @@ export default function Home() {
       <header className="site-header">
         <div className="header-inner">
           <a className="site-title" href="#about" aria-label="Back to the top">
-            Yuang Wei
+            {profile.name}
           </a>
           <button
             className="menu-button"
@@ -369,48 +358,50 @@ export default function Home() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className="portrait"
-            src="images/weiyuang.png"
-            alt="Portrait of Yuang Wei"
+            src={profile.avatar}
+            alt={profile.avatarAlt}
           />
           <div className="profile-intro">
-            <h1>Yuang Wei</h1>
+            <h1>{profile.name}</h1>
             <p className="position">
-              Faculty of Artificial Intelligence in Education, Central China
-              Normal University · Lecturer
+              {profile.affiliation} · {profile.title}
             </p>
           </div>
 
           <div className="contact-list">
             <div className="contact-location">
               <FaMapMarkerAlt className="contact-icon" aria-hidden="true" />
-              Wuhan, China
+              {profile.location}
             </div>
             <button type="button" onClick={copyEmail}>
               <FaEnvelope className="contact-icon" aria-hidden="true" />
-              {emailCopied ? "Email copied" : "philrain@foxmail.com"}
+              {emailCopied ? "Email copied" : profile.email}
             </button>
-            <ExternalLink href="https://www.researchgate.net/profile/Yuang-Wei">
+            <ExternalLink href={profile.links.researchGate}>
               <FaResearchgate className="contact-icon" aria-hidden="true" />
               ResearchGate
             </ExternalLink>
-            <ExternalLink href="https://github.com/PhilrainV">
+            <ExternalLink href={profile.links.github}>
               <FaGithub className="contact-icon" aria-hidden="true" />
               GitHub
             </ExternalLink>
-            <ExternalLink href={scholarUrl}>
+            <ExternalLink href={profile.links.googleScholar}>
               <FaGraduationCap
                 className="contact-icon scholar-mark"
                 aria-hidden="true"
               />
               Google Scholar
             </ExternalLink>
-            <ExternalLink href="https://orcid.org/0000-0002-8187-4011">
+            <ExternalLink href={profile.links.orcid}>
               <SiOrcid className="contact-icon" aria-hidden="true" />
               ORCID
             </ExternalLink>
           </div>
 
-          <ExternalLink href={scholarUrl} className="scholar-card">
+          <ExternalLink
+            href={profile.links.googleScholar}
+            className="scholar-card"
+          >
             <div className="scholar-card-title">
               <span>
                 <FaGraduationCap aria-hidden="true" /> Google Scholar
@@ -447,51 +438,24 @@ export default function Home() {
           >
             <SectionHeading id="about">About Me</SectionHeading>
             <div className="intro-text">
-              <p>
-                I received my Ph.D. in Intelligent Education from the{" "}
-                <strong>
-                  Shanghai Institute of AI for Education, East China Normal
-                  University (ECNU)
-                </strong>
-                , under the supervision of{" "}
-                <ExternalLink href="https://faculty.ecnu.edu.cn/_s8/jb2/main.psp">
-                  Professor Bo Jiang
-                </ExternalLink>
-                . I am currently a Lecturer at the Faculty of Artificial
-                Intelligence in Education, Central China Normal University
-                (CCNU). I conduct research on trustworthy and explainable AI for
-                education and have published more than 20 academic papers,
-                including collaborative work.
-              </p>
-              <p>
-                I serve as a reviewer for <em>Computers & Education</em>,{" "}
-                <em>Education and Information Technologies</em>,{" "}
-                <em>Information Processing & Management</em>,{" "}
-                <em>IEEE Transactions on Emerging Topics in Computing</em>,{" "}
-                <em>
-                  International Journal of Artificial Intelligence in Education
-                </em>
-                , <em>Knowledge-Based Systems</em>, and{" "}
-                <em>Humanities & Social Sciences Communications</em>, as well as
-                NeurIPS, AAAI, KDD, ICASSP, AIED, and EDM.
-              </p>
-              <p>
-                If you are interested in my research, please feel free to
-                contact me. I am always happy to discuss ideas and explore
-                research collaborations.
-              </p>
+              {profile.bio.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
             <div className="research-row">
               <strong>Research</strong>
               <div>
-                {interests.map((interest) => (
+                {profile.researchInterests.map((interest) => (
                   <span key={interest}>{interest}</span>
                 ))}
               </div>
             </div>
           </section>
 
-          <section className="content-section" aria-labelledby="education">
+          <section
+            className="content-section education-section"
+            aria-labelledby="education"
+          >
             <SectionHeading id="education">Education</SectionHeading>
             <div className="education-list">
               <article className="education-item">
