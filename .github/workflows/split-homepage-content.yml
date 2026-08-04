@@ -49,5 +49,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html assets
-          git commit -m "Build homepage from maintainable source [skip ci]"
-          git push origin HEAD:master
+          if git diff --cached --quiet; then
+            echo "Generated homepage is already up to date."
+          else
+            git commit -m "Build homepage from maintainable source [skip ci]"
+            git push origin HEAD:master
+          fi
