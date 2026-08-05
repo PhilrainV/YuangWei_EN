@@ -7,7 +7,7 @@ window.YUANG_WEI_CONTENT.education = [
     institution: "East China Normal University (ECNU)",
     institutionUrl: "https://aiedu.ecnu.edu.cn/",
     program:
-      "Shanghai Institute of AI for Education · Intelligent Education · Ph.D.",
+      "Shanghai Institute of AI for Education · Computer Science and Technology (AI for Education) · Ph.D.",
     logo: "images/ECNU_logo.png",
     logoAlt: "East China Normal University logo",
     supervisor: "Prof. Bo Jiang",
