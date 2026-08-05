@@ -2,58 +2,59 @@ import { r as u, j as e, c as C } from "./react-vendor-BTWVIjLd.js";
 import { w as N } from "./world-map-CPvcksDd.js";
 import {
   F as S,
-  a as E,
-  b as k,
+  a as k,
+  b as E,
   c as A,
-  d as P,
+  d as $,
   e as y,
-  S as M,
+  S as F,
 } from "./icons-vendor-CUxSbwz5.js";
 (function () {
-  const d = document.createElement("link").relList;
-  if (d && d.supports && d.supports("modulepreload")) return;
+  const o = document.createElement("link").relList;
+  if (o && o.supports && o.supports("modulepreload")) return;
   for (const t of document.querySelectorAll('link[rel="modulepreload"]')) p(t);
   new MutationObserver((t) => {
-    for (const h of t)
-      if (h.type === "childList")
-        for (const i of h.addedNodes)
+    for (const d of t)
+      if (d.type === "childList")
+        for (const i of d.addedNodes)
           i.tagName === "LINK" && i.rel === "modulepreload" && p(i);
   }).observe(document, { childList: !0, subtree: !0 });
   function l(t) {
-    const h = {};
+    const d = {};
     return (
-      t.integrity && (h.integrity = t.integrity),
-      t.referrerPolicy && (h.referrerPolicy = t.referrerPolicy),
+      t.integrity && (d.integrity = t.integrity),
+      t.referrerPolicy && (d.referrerPolicy = t.referrerPolicy),
       t.crossOrigin === "use-credentials"
-        ? (h.credentials = "include")
+        ? (d.credentials = "include")
         : t.crossOrigin === "anonymous"
-          ? (h.credentials = "omit")
-          : (h.credentials = "same-origin"),
-      h
+          ? (d.credentials = "omit")
+          : (d.credentials = "same-origin"),
+      d
     );
   }
   function p(t) {
     if (t.ep) return;
     t.ep = !0;
-    const h = l(t);
-    fetch(t.href, h);
+    const d = l(t);
+    fetch(t.href, d);
   }
 })();
-const m = window.YUANG_WEI_CONTENT ?? {};
-function f(n) {
-  return Array.isArray(n) ? n : [];
+const j = window.YUANG_WEI_CONTENT ?? {};
+function g(a) {
+  return Array.isArray(a) ? a : [];
 }
-const U = f(m.publications),
-  o = m.profile,
-  $ = f(m.books),
-  F = f(m.patents),
-  L = f(m.softwareCopyrights),
-  O = f(m.honors),
-  V = f(m.experience),
+const P = g(j.publications),
+  c = j.profile,
+  M = g(j.education),
+  O = g(j.books),
+  L = g(j.patents),
+  V = g(j.softwareCopyrights),
+  W = g(j.honors),
+  Y = g(j.experience),
   w = "https://yuang-wei-academic.philrain-cs.chatgpt.site/api/visitors",
-  B =
+  U =
     "https://raw.githubusercontent.com/PhilrainV/YuangWei_EN/google-scholar-stats/gs_data.json",
-  I = [
+  G = [
     ["About", "about"],
     ["Education", "education"],
     ["Publications", "publications"],
@@ -61,18 +62,18 @@ const U = f(m.publications),
     ["Honors", "honors"],
     ["Experience", "experience"],
   ],
-  W = new Intl.DisplayNames(["en"], { type: "region" });
-function Y(n) {
-  const d =
-    n.countryCode && n.countryCode !== "XX"
-      ? W.of(n.countryCode)
+  B = new Intl.DisplayNames(["en"], { type: "region" });
+function I(a) {
+  const o =
+    a.countryCode && a.countryCode !== "XX"
+      ? B.of(a.countryCode)
       : "Unknown location";
-  return [n.city, d].filter(Boolean).join(", ");
+  return [a.city, o].filter(Boolean).join(", ");
 }
-function b({ text: n }) {
-  const d = n.split(/(Yuang Wei|Yu’ang Wei|Wei Yuang|魏雨昂)/g);
+function f({ text: a }) {
+  const o = a.split(/(Yuang Wei|Yu’ang Wei|Wei Yuang|魏雨昂)/g);
   return e.jsx(e.Fragment, {
-    children: d.map((l, p) =>
+    children: o.map((l, p) =>
       /^(Yuang Wei|Yu’ang Wei|Wei Yuang|魏雨昂)$/.test(l)
         ? e.jsx(
             "strong",
@@ -83,30 +84,30 @@ function b({ text: n }) {
     ),
   });
 }
-function j({ id: n, children: d }) {
-  return e.jsx("h2", { className: "section-heading", id: n, children: d });
+function m({ id: a, children: o }) {
+  return e.jsx("h2", { className: "section-heading", id: a, children: o });
 }
-function c({ href: n, children: d, className: l = "" }) {
+function h({ href: a, children: o, className: l = "" }) {
   return e.jsx("a", {
     className: l,
-    href: n,
+    href: a,
     target: "_blank",
     rel: "noreferrer",
-    children: d,
+    children: o,
   });
 }
-function T() {
-  const [n, d] = u.useState(null),
+function R() {
+  const [a, o] = u.useState(null),
     [l, p] = u.useState(!1);
   u.useEffect(() => {
     let i = !0;
     async function x() {
       try {
         await fetch(w, { method: "POST", mode: "cors" });
-        const g = await fetch(w, { cache: "no-store", mode: "cors" });
-        if (!g.ok) throw new Error("visitor statistics unavailable");
-        const v = await g.json();
-        i && d(v);
+        const b = await fetch(w, { cache: "no-store", mode: "cors" });
+        if (!b.ok) throw new Error("visitor statistics unavailable");
+        const v = await b.json();
+        i && o(v);
       } catch {
         i && p(!0);
       }
@@ -119,10 +120,10 @@ function T() {
     );
   }, []);
   const t = u.useMemo(
-      () => new Map((n?.countries ?? []).map((i) => [i.code.toLowerCase(), i])),
-      [n],
+      () => new Map((a?.countries ?? []).map((i) => [i.code.toLowerCase(), i])),
+      [a],
     ),
-    h = Math.max(1, ...(n?.countries ?? []).map((i) => i.visits));
+    d = Math.max(1, ...(a?.countries ?? []).map((i) => i.visits));
   return e.jsxs("div", {
     className: "visitor-dashboard",
     children: [
@@ -136,13 +137,13 @@ function T() {
             "aria-label": "World map of website visitors",
             children: N.locations.map((i) => {
               const x = t.get(i.id),
-                g = x ? 0.3 + (x.visits / h) * 0.7 : 0;
+                b = x ? 0.3 + (x.visits / d) * 0.7 : 0;
               return e.jsx(
                 "path",
                 {
                   className: x ? "country-shape has-visits" : "country-shape",
                   d: i.path,
-                  style: x ? { opacity: g } : void 0,
+                  style: x ? { opacity: b } : void 0,
                   children: e.jsx("title", {
                     children: x ? `${i.name}: ${x.visits} visits` : i.name,
                   }),
@@ -166,19 +167,19 @@ function T() {
             children: [
               e.jsxs("div", {
                 children: [
-                  e.jsx("strong", { children: n?.totalVisits ?? "—" }),
+                  e.jsx("strong", { children: a?.totalVisits ?? "—" }),
                   e.jsx("span", { children: "Total visits" }),
                 ],
               }),
               e.jsxs("div", {
                 children: [
-                  e.jsx("strong", { children: n?.uniqueVisitors ?? "—" }),
+                  e.jsx("strong", { children: a?.uniqueVisitors ?? "—" }),
                   e.jsx("span", { children: "Unique visitors" }),
                 ],
               }),
               e.jsxs("div", {
                 children: [
-                  e.jsx("strong", { children: n?.countries.length ?? "—" }),
+                  e.jsx("strong", { children: a?.countries.length ?? "—" }),
                   e.jsx("span", { children: "Countries / regions" }),
                 ],
               }),
@@ -190,10 +191,10 @@ function T() {
                 className: "visitor-empty",
                 children: "Visitor statistics are temporarily unavailable.",
               })
-            : n?.recentVisitors.length
+            : a?.recentVisitors.length
               ? e.jsx("ol", {
                   className: "recent-visitors",
-                  children: n.recentVisitors.map((i) =>
+                  children: a.recentVisitors.map((i) =>
                     e.jsxs(
                       "li",
                       {
@@ -202,7 +203,7 @@ function T() {
                             className: "visitor-id",
                             children: ["Visitor ", i.id],
                           }),
-                          e.jsx("span", { children: Y(i) }),
+                          e.jsx("span", { children: I(i) }),
                         ],
                       },
                       `${i.id}-${i.lastSeen}`,
@@ -223,10 +224,10 @@ function T() {
     ],
   });
 }
-function _() {
-  const [n, d] = u.useState(!1),
+function T() {
+  const [a, o] = u.useState(!1),
     [l, p] = u.useState("All"),
-    [t, h] = u.useState(!1),
+    [t, d] = u.useState(!1),
     [i, x] = u.useState({
       citedby: 330,
       hindex: 11,
@@ -236,18 +237,18 @@ function _() {
   u.useEffect(() => {
     let s = !0;
     return (
-      fetch(B, { cache: "no-store" })
+      fetch(U, { cache: "no-store" })
         .then((r) => {
           if (!r.ok) throw new Error("scholar statistics unavailable");
           return r.json();
         })
         .then((r) => {
           s &&
-            x((a) => ({
-              citedby: Number(r.citedby ?? a.citedby),
-              hindex: Number(r.hindex ?? a.hindex),
-              i10index: Number(r.i10index ?? a.i10index),
-              updated: r.updated ?? a.updated,
+            x((n) => ({
+              citedby: Number(r.citedby ?? n.citedby),
+              hindex: Number(r.hindex ?? n.hindex),
+              i10index: Number(r.i10index ?? n.i10index),
+              updated: r.updated ?? n.updated,
             }));
         })
         .catch(() => {}),
@@ -256,7 +257,7 @@ function _() {
       }
     );
   }, []);
-  const g = u.useMemo(
+  const b = u.useMemo(
     () =>
       [
         "Journal Articles",
@@ -270,15 +271,15 @@ function _() {
               ? r !== "Conference Papers"
               : r === "Conference Papers"),
         )
-        .map((r) => ({ group: r, papers: U.filter((a) => a.group === r) })),
+        .map((r) => ({ group: r, papers: P.filter((n) => n.group === r) })),
     [l],
   );
   async function v() {
     try {
-      await navigator.clipboard.writeText(o.email);
+      await navigator.clipboard.writeText(c.email);
     } catch {
       const s = document.createElement("textarea");
-      ((s.value = o.email),
+      ((s.value = c.email),
         (s.style.position = "fixed"),
         (s.style.opacity = "0"),
         document.body.appendChild(s),
@@ -286,7 +287,7 @@ function _() {
         document.execCommand("copy"),
         s.remove());
     }
-    (h(!0), window.setTimeout(() => h(!1), 1600));
+    (d(!0), window.setTimeout(() => d(!1), 1600));
   }
   return e.jsxs(e.Fragment, {
     children: [
@@ -299,14 +300,14 @@ function _() {
               className: "site-title",
               href: "#about",
               "aria-label": "Back to the top",
-              children: o.name,
+              children: c.name,
             }),
             e.jsxs("button", {
               className: "menu-button",
               type: "button",
-              "aria-label": n ? "Close navigation" : "Open navigation",
-              "aria-expanded": n,
-              onClick: () => d((s) => !s),
+              "aria-label": a ? "Close navigation" : "Open navigation",
+              "aria-expanded": a,
+              onClick: () => o((s) => !s),
               children: [
                 e.jsx("span", {}),
                 e.jsx("span", {}),
@@ -314,13 +315,13 @@ function _() {
               ],
             }),
             e.jsxs("nav", {
-              className: n ? "main-nav is-open" : "main-nav",
+              className: a ? "main-nav is-open" : "main-nav",
               "aria-label": "Main navigation",
               children: [
-                I.map(([s, r]) =>
+                G.map(([s, r]) =>
                   e.jsx(
                     "a",
-                    { href: `#${r}`, onClick: () => d(!1), children: s },
+                    { href: `#${r}`, onClick: () => o(!1), children: s },
                     r,
                   ),
                 ),
@@ -345,16 +346,16 @@ function _() {
             children: [
               e.jsx("img", {
                 className: "portrait",
-                src: o.avatar,
-                alt: o.avatarAlt,
+                src: c.avatar,
+                alt: c.avatarAlt,
               }),
               e.jsxs("div", {
                 className: "profile-intro",
                 children: [
-                  e.jsx("h1", { children: o.name }),
+                  e.jsx("h1", { children: c.name }),
                   e.jsxs("p", {
                     className: "position",
-                    children: [o.affiliation, " · ", o.title],
+                    children: [c.affiliation, " · ", c.title],
                   }),
                 ],
               }),
@@ -364,26 +365,26 @@ function _() {
                   e.jsxs("div", {
                     className: "contact-location",
                     children: [
-                      e.jsx(E, {
+                      e.jsx(k, {
                         className: "contact-icon",
                         "aria-hidden": "true",
                       }),
-                      o.location,
+                      c.location,
                     ],
                   }),
                   e.jsxs("button", {
                     type: "button",
                     onClick: v,
                     children: [
-                      e.jsx(k, {
+                      e.jsx(E, {
                         className: "contact-icon",
                         "aria-hidden": "true",
                       }),
-                      t ? "Email copied" : o.email,
+                      t ? "Email copied" : c.email,
                     ],
                   }),
-                  e.jsxs(c, {
-                    href: o.links.researchGate,
+                  e.jsxs(h, {
+                    href: c.links.researchGate,
                     children: [
                       e.jsx(A, {
                         className: "contact-icon",
@@ -392,18 +393,18 @@ function _() {
                       "ResearchGate",
                     ],
                   }),
-                  e.jsxs(c, {
-                    href: o.links.github,
+                  e.jsxs(h, {
+                    href: c.links.github,
                     children: [
-                      e.jsx(P, {
+                      e.jsx($, {
                         className: "contact-icon",
                         "aria-hidden": "true",
                       }),
                       "GitHub",
                     ],
                   }),
-                  e.jsxs(c, {
-                    href: o.links.googleScholar,
+                  e.jsxs(h, {
+                    href: c.links.googleScholar,
                     children: [
                       e.jsx(y, {
                         className: "contact-icon scholar-mark",
@@ -412,10 +413,10 @@ function _() {
                       "Google Scholar",
                     ],
                   }),
-                  e.jsxs(c, {
-                    href: o.links.orcid,
+                  e.jsxs(h, {
+                    href: c.links.orcid,
                     children: [
-                      e.jsx(M, {
+                      e.jsx(F, {
                         className: "contact-icon",
                         "aria-hidden": "true",
                       }),
@@ -424,8 +425,8 @@ function _() {
                   }),
                 ],
               }),
-              e.jsxs(c, {
-                href: o.links.googleScholar,
+              e.jsxs(h, {
+                href: c.links.googleScholar,
                 className: "scholar-card",
                 children: [
                   e.jsxs("div", {
@@ -482,17 +483,17 @@ function _() {
                 className: "content-section about-section",
                 "aria-labelledby": "about",
                 children: [
-                  e.jsx(j, { id: "about", children: "About Me" }),
+                  e.jsx(m, { id: "about", children: "About Me" }),
                   e.jsx("div", {
                     className: "intro-text",
-                    children: o.bio.map((s) => e.jsx("p", { children: s }, s)),
+                    children: c.bio.map((s) => e.jsx("p", { children: s }, s)),
                   }),
                   e.jsxs("div", {
                     className: "research-row",
                     children: [
                       e.jsx("strong", { children: "Research" }),
                       e.jsx("div", {
-                        children: o.researchInterests.map((s) =>
+                        children: c.researchInterests.map((s) =>
                           e.jsx("span", { children: s }, s),
                         ),
                       }),
@@ -504,148 +505,63 @@ function _() {
                 className: "content-section education-section",
                 "aria-labelledby": "education",
                 children: [
-                  e.jsx(j, { id: "education", children: "Education" }),
-                  e.jsxs("div", {
+                  e.jsx(m, { id: "education", children: "Education" }),
+                  e.jsx("div", {
                     className: "education-list",
-                    children: [
-                      e.jsxs("article", {
-                        className: "education-item",
-                        children: [
-                          e.jsx(c, {
-                            href: "https://aiedu.ecnu.edu.cn/",
-                            className: "school-logo-link",
-                            children: e.jsx("img", {
-                              src: "images/ECNU_logo.png",
-                              alt: "East China Normal University logo",
+                    children: M.map((s) =>
+                      e.jsxs(
+                        "article",
+                        {
+                          className: "education-item",
+                          children: [
+                            e.jsx(h, {
+                              href: s.institutionUrl,
+                              className: "school-logo-link",
+                              children: e.jsx("img", {
+                                src: s.logo,
+                                alt: s.logoAlt,
+                              }),
                             }),
-                          }),
-                          e.jsx("div", {
-                            className: "education-time",
-                            children: "2022.06 — 2026.06",
-                          }),
-                          e.jsxs("div", {
-                            className: "education-body",
-                            children: [
-                              e.jsx("h3", {
-                                children: e.jsx(c, {
-                                  href: "https://aiedu.ecnu.edu.cn/",
-                                  children:
-                                    "East China Normal University (ECNU)",
-                                }),
-                              }),
-                              e.jsx("p", {
-                                children:
-                                  "Shanghai Institute of AI for Education · Intelligent Education · Ph.D.",
-                              }),
-                              e.jsxs("p", {
-                                className: "education-note",
-                                children: [
-                                  "Supervisor:",
-                                  " ",
-                                  e.jsx(c, {
-                                    href: "https://faculty.ecnu.edu.cn/_s8/jb2/main.psp",
-                                    children: "Prof. Bo Jiang",
-                                  }),
-                                  e.jsx("span", {
-                                    children: "Shanghai, China",
-                                  }),
-                                ],
-                              }),
-                            ],
-                          }),
-                        ],
-                      }),
-                      e.jsxs("article", {
-                        className: "education-item",
-                        children: [
-                          e.jsx(c, {
-                            href: "https://www.comp.nus.edu.sg/cs/",
-                            className: "school-logo-link",
-                            children: e.jsx("img", {
-                              src: "images/NUS_logo.png",
-                              alt: "National University of Singapore logo",
+                            e.jsx("div", {
+                              className: "education-time",
+                              children: s.period,
                             }),
-                          }),
-                          e.jsx("div", {
-                            className: "education-time",
-                            children: "2024.09 — 2025.09",
-                          }),
-                          e.jsxs("div", {
-                            className: "education-body",
-                            children: [
-                              e.jsx("h3", {
-                                children: e.jsx(c, {
-                                  href: "https://www.comp.nus.edu.sg/cs/",
-                                  children:
-                                    "National University of Singapore (NUS)",
-                                }),
-                              }),
-                              e.jsx("p", {
-                                children:
-                                  "Department of Computer Science · Human–Computer Interaction · CSC Visiting Ph.D. Student",
-                              }),
-                              e.jsxs("p", {
-                                className: "education-note",
-                                children: [
-                                  "Supervisor:",
-                                  " ",
-                                  e.jsx(c, {
-                                    href: "https://www.comp.nus.edu.sg/cs/people/brianlim/",
-                                    children: "Assoc. Prof. Brian Y. Lim",
+                            e.jsxs("div", {
+                              className: "education-body",
+                              children: [
+                                e.jsx("h3", {
+                                  children: e.jsx(h, {
+                                    href: s.institutionUrl,
+                                    children: s.institution,
                                   }),
-                                  e.jsx("span", { children: "Singapore" }),
-                                ],
-                              }),
-                            ],
-                          }),
-                        ],
-                      }),
-                      e.jsxs("article", {
-                        className: "education-item",
-                        children: [
-                          e.jsx(c, {
-                            href: "https://dqgc.ncut.edu.cn/",
-                            className: "school-logo-link",
-                            children: e.jsx("img", {
-                              src: "images/NCUT_logo.png",
-                              alt: "North China University of Technology logo",
+                                }),
+                                e.jsx("p", { children: s.program }),
+                                e.jsxs("p", {
+                                  className: "education-note",
+                                  children: [
+                                    s.supervisor &&
+                                      e.jsxs(e.Fragment, {
+                                        children: [
+                                          "Supervisor:",
+                                          " ",
+                                          s.supervisorUrl
+                                            ? e.jsx(h, {
+                                                href: s.supervisorUrl,
+                                                children: s.supervisor,
+                                              })
+                                            : s.supervisor,
+                                        ],
+                                      }),
+                                    e.jsx("span", { children: s.location }),
+                                  ],
+                                }),
+                              ],
                             }),
-                          }),
-                          e.jsx("div", {
-                            className: "education-time",
-                            children: "2015.09 — 2022.06",
-                          }),
-                          e.jsxs("div", {
-                            className: "education-body",
-                            children: [
-                              e.jsx("h3", {
-                                children: e.jsx(c, {
-                                  href: "https://dqgc.ncut.edu.cn/",
-                                  children:
-                                    "North China University of Technology (NCUT)",
-                                }),
-                              }),
-                              e.jsx("p", {
-                                children:
-                                  "School of Electrical and Control Engineering · B.Eng. in Automation and M.Eng. in Control Science and Engineering",
-                              }),
-                              e.jsxs("p", {
-                                className: "education-note",
-                                children: [
-                                  "Supervisor:",
-                                  " ",
-                                  e.jsx(c, {
-                                    href: "https://dqgc.ncut.edu.cn/info/1228/3137.htm",
-                                    children: "Assoc. Prof. Jining Xu",
-                                  }),
-                                  e.jsx("span", { children: "Beijing, China" }),
-                                ],
-                              }),
-                            ],
-                          }),
-                        ],
-                      }),
-                    ],
+                          ],
+                        },
+                        `${s.period}-${s.institution}`,
+                      ),
+                    ),
                   }),
                 ],
               }),
@@ -656,7 +572,7 @@ function _() {
                   e.jsxs("div", {
                     className: "heading-with-tools",
                     children: [
-                      e.jsx(j, {
+                      e.jsx(m, {
                         id: "publications",
                         children: "Publications",
                       }),
@@ -686,7 +602,7 @@ function _() {
                       " indicates my name; publications are grouped by type and ordered by year.",
                     ],
                   }),
-                  g.map(({ group: s, papers: r }) =>
+                  b.map(({ group: s, papers: r }) =>
                     e.jsxs(
                       "div",
                       {
@@ -701,22 +617,22 @@ function _() {
                           }),
                           e.jsx("div", {
                             className: "publication-list",
-                            children: r.map((a) =>
+                            children: r.map((n) =>
                               e.jsxs(
                                 "article",
                                 {
-                                  className: a.image
+                                  className: n.image
                                     ? "publication-item with-image"
                                     : "publication-item",
                                   children: [
-                                    a.image &&
+                                    n.image &&
                                       e.jsx("img", {
                                         className: "publication-image",
-                                        src: a.image,
-                                        alt: `Illustration for ${a.title}`,
+                                        src: n.image,
+                                        alt: `Illustration for ${n.title}`,
                                         loading: "lazy",
                                         style: {
-                                          objectFit: a.imageFit || "cover",
+                                          objectFit: n.imageFit || "cover",
                                         },
                                       }),
                                     e.jsxs("div", {
@@ -727,28 +643,28 @@ function _() {
                                           children: [
                                             e.jsx("span", {
                                               className: "venue-badge",
-                                              children: a.venue,
+                                              children: n.venue,
                                             }),
-                                            e.jsx("time", { children: a.year }),
+                                            e.jsx("time", { children: n.year }),
                                           ],
                                         }),
-                                        e.jsx("h4", { children: a.title }),
+                                        e.jsx("h4", { children: n.title }),
                                         e.jsx("p", {
                                           className: "publication-authors",
-                                          children: e.jsx(b, {
-                                            text: a.authors,
+                                          children: e.jsx(f, {
+                                            text: n.authors,
                                           }),
                                         }),
                                         e.jsx("p", {
                                           className: "publication-venue",
-                                          children: a.publication,
+                                          children: n.publication,
                                         }),
                                         e.jsxs("div", {
                                           className: "publication-links",
                                           children: [
-                                            a.webpage &&
-                                              e.jsxs(c, {
-                                                href: a.webpage,
+                                            n.webpage &&
+                                              e.jsxs(h, {
+                                                href: n.webpage,
                                                 children: [
                                                   "Web ",
                                                   e.jsx("span", {
@@ -757,8 +673,8 @@ function _() {
                                                   }),
                                                 ],
                                               }),
-                                            e.jsxs(c, {
-                                              href: a.download,
+                                            e.jsxs(h, {
+                                              href: n.download,
                                               children: [
                                                 "PDF ",
                                                 e.jsx("span", {
@@ -773,7 +689,7 @@ function _() {
                                     }),
                                   ],
                                 },
-                                `${a.year}-${a.title}`,
+                                `${n.year}-${n.title}`,
                               ),
                             ),
                           }),
@@ -788,7 +704,7 @@ function _() {
                 className: "content-section",
                 "aria-labelledby": "outputs",
                 children: [
-                  e.jsx(j, { id: "outputs", children: "Other Outputs" }),
+                  e.jsx(m, { id: "outputs", children: "Other Outputs" }),
                   e.jsxs("div", {
                     className: "output-columns",
                     children: [
@@ -797,17 +713,17 @@ function _() {
                         children: [
                           e.jsx("h3", { children: "Books" }),
                           e.jsx("ol", {
-                            children: $.map((s) =>
+                            children: O.map((s) =>
                               e.jsxs(
                                 "li",
                                 {
                                   children: [
                                     e.jsx("strong", { children: s.title }),
                                     e.jsx("span", {
-                                      children: e.jsx(b, { text: s.meta }),
+                                      children: e.jsx(f, { text: s.meta }),
                                     }),
                                     s.url &&
-                                      e.jsx(c, {
+                                      e.jsx(h, {
                                         href: s.url,
                                         children:
                                           s.linkLabel ?? "View material ↗",
@@ -825,17 +741,17 @@ function _() {
                         children: [
                           e.jsx("h3", { children: "Patents" }),
                           e.jsx("ol", {
-                            children: F.map((s) =>
+                            children: L.map((s) =>
                               e.jsxs(
                                 "li",
                                 {
                                   children: [
                                     e.jsx("strong", { children: s.title }),
                                     e.jsx("span", {
-                                      children: e.jsx(b, { text: s.meta }),
+                                      children: e.jsx(f, { text: s.meta }),
                                     }),
                                     s.url &&
-                                      e.jsx(c, {
+                                      e.jsx(h, {
                                         href: s.url,
                                         children:
                                           s.linkLabel ?? "View material ↗",
@@ -853,17 +769,17 @@ function _() {
                         children: [
                           e.jsx("h3", { children: "Software Copyrights" }),
                           e.jsx("ol", {
-                            children: L.map((s) =>
+                            children: V.map((s) =>
                               e.jsxs(
                                 "li",
                                 {
                                   children: [
                                     e.jsx("strong", { children: s.title }),
                                     e.jsx("span", {
-                                      children: e.jsx(b, { text: s.meta }),
+                                      children: e.jsx(f, { text: s.meta }),
                                     }),
                                     s.url &&
-                                      e.jsx(c, {
+                                      e.jsx(h, {
                                         href: s.url,
                                         children:
                                           s.linkLabel ?? "View material ↗",
@@ -884,10 +800,10 @@ function _() {
                 className: "content-section",
                 "aria-labelledby": "honors",
                 children: [
-                  e.jsx(j, { id: "honors", children: "Honors & Awards" }),
+                  e.jsx(m, { id: "honors", children: "Honors & Awards" }),
                   e.jsx("div", {
                     className: "simple-list",
-                    children: O.map((s) =>
+                    children: W.map((s) =>
                       e.jsxs(
                         "div",
                         {
@@ -907,13 +823,13 @@ function _() {
                 className: "content-section",
                 "aria-labelledby": "experience",
                 children: [
-                  e.jsx(j, {
+                  e.jsx(m, {
                     id: "experience",
                     children: "Professional Experience",
                   }),
                   e.jsx("div", {
                     className: "experience-list",
-                    children: V.map((s) =>
+                    children: Y.map((s) =>
                       e.jsxs(
                         "article",
                         {
@@ -937,11 +853,11 @@ function _() {
                 className: "content-section visitor-section",
                 "aria-labelledby": "visitors",
                 children: [
-                  e.jsx(j, {
+                  e.jsx(m, {
                     id: "visitors",
                     children: "Visitor Distribution",
                   }),
-                  e.jsx(T, {}),
+                  e.jsx(R, {}),
                 ],
               }),
             ],
@@ -959,5 +875,5 @@ function _() {
   });
 }
 C.createRoot(document.getElementById("root")).render(
-  e.jsx(u.StrictMode, { children: e.jsx(_, {}) }),
+  e.jsx(u.StrictMode, { children: e.jsx(T, {}) }),
 );
