@@ -4,6 +4,7 @@ These files are the direct editing entry points for the live homepage. Changes t
 
 - `publications.js`: publications
 - `profile.js`: name, role, affiliation, portrait, email, bio, research interests, and academic links
+- `education.js`: education, institution links, logos, degrees, supervisors, and locations
 - `books.js`: books
 - `patents.js`: patents
 - `software-copyrights.js`: software copyrights
@@ -30,3 +31,16 @@ All personal details are centralized in `profile.js`:
 - `links`: ResearchGate, GitHub, Google Scholar, and ORCID URLs
 
 Edit the values and commit the file. Keep the field names and outer braces intact.
+
+## Editing education
+
+All education entries are centralized in `education.js`. Each `{ ... },` item represents one institution or period of study:
+
+- `period`: start and end dates
+- `institution` and `institutionUrl`: institution name and website
+- `program`: school, field, and degree description
+- `logo` and `logoAlt`: logo path and alternative text
+- `supervisor` and `supervisorUrl`: supervisor name and profile; remove both if not applicable
+- `location`: city and country/region
+
+To add an entry, copy one complete item and edit its values. Upload a new logo to `images/` before setting its path.

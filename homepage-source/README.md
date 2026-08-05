@@ -7,6 +7,6 @@ Application structure:
 - `src/App.tsx`: page components and interaction logic
 - `src/content.ts`: content type definitions and runtime loader
 - `src/styles.css`: page styling
-- `../content/`: profile, publications, books, patents, software copyrights, honors, and experience
+- `../content/`: profile, education, publications, books, patents, software copyrights, honors, and experience
 
 Most routine updates require editing only `../content/`.

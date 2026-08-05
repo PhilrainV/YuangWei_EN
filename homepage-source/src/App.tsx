@@ -13,6 +13,7 @@ import {
 import { SiOrcid } from "react-icons/si";
 import {
   books,
+  education,
   experience,
   honors,
   patents,
@@ -458,99 +459,44 @@ export default function Home() {
           >
             <SectionHeading id="education">Education</SectionHeading>
             <div className="education-list">
-              <article className="education-item">
-                <ExternalLink
-                  href="https://aiedu.ecnu.edu.cn/"
-                  className="school-logo-link"
+              {education.map((item) => (
+                <article
+                  className="education-item"
+                  key={`${item.period}-${item.institution}`}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="images/ECNU_logo.png"
-                    alt="East China Normal University logo"
-                  />
-                </ExternalLink>
-                <div className="education-time">2022.06 — 2026.06</div>
-                <div className="education-body">
-                  <h3>
-                    <ExternalLink href="https://aiedu.ecnu.edu.cn/">
-                      East China Normal University (ECNU)
-                    </ExternalLink>
-                  </h3>
-                  <p>
-                    Shanghai Institute of AI for Education · Intelligent
-                    Education · Ph.D.
-                  </p>
-                  <p className="education-note">
-                    Supervisor:{" "}
-                    <ExternalLink href="https://faculty.ecnu.edu.cn/_s8/jb2/main.psp">
-                      Prof. Bo Jiang
-                    </ExternalLink>
-                    <span>Shanghai, China</span>
-                  </p>
-                </div>
-              </article>
-              <article className="education-item">
-                <ExternalLink
-                  href="https://www.comp.nus.edu.sg/cs/"
-                  className="school-logo-link"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="images/NUS_logo.png"
-                    alt="National University of Singapore logo"
-                  />
-                </ExternalLink>
-                <div className="education-time">2024.09 — 2025.09</div>
-                <div className="education-body">
-                  <h3>
-                    <ExternalLink href="https://www.comp.nus.edu.sg/cs/">
-                      National University of Singapore (NUS)
-                    </ExternalLink>
-                  </h3>
-                  <p>
-                    Department of Computer Science · Human–Computer Interaction
-                    · CSC Visiting Ph.D. Student
-                  </p>
-                  <p className="education-note">
-                    Supervisor:{" "}
-                    <ExternalLink href="https://www.comp.nus.edu.sg/cs/people/brianlim/">
-                      Assoc. Prof. Brian Y. Lim
-                    </ExternalLink>
-                    <span>Singapore</span>
-                  </p>
-                </div>
-              </article>
-              <article className="education-item">
-                <ExternalLink
-                  href="https://dqgc.ncut.edu.cn/"
-                  className="school-logo-link"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="images/NCUT_logo.png"
-                    alt="North China University of Technology logo"
-                  />
-                </ExternalLink>
-                <div className="education-time">2015.09 — 2022.06</div>
-                <div className="education-body">
-                  <h3>
-                    <ExternalLink href="https://dqgc.ncut.edu.cn/">
-                      North China University of Technology (NCUT)
-                    </ExternalLink>
-                  </h3>
-                  <p>
-                    School of Electrical and Control Engineering · B.Eng. in
-                    Automation and M.Eng. in Control Science and Engineering
-                  </p>
-                  <p className="education-note">
-                    Supervisor:{" "}
-                    <ExternalLink href="https://dqgc.ncut.edu.cn/info/1228/3137.htm">
-                      Assoc. Prof. Jining Xu
-                    </ExternalLink>
-                    <span>Beijing, China</span>
-                  </p>
-                </div>
-              </article>
+                  <ExternalLink
+                    href={item.institutionUrl}
+                    className="school-logo-link"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={item.logo} alt={item.logoAlt} />
+                  </ExternalLink>
+                  <div className="education-time">{item.period}</div>
+                  <div className="education-body">
+                    <h3>
+                      <ExternalLink href={item.institutionUrl}>
+                        {item.institution}
+                      </ExternalLink>
+                    </h3>
+                    <p>{item.program}</p>
+                    <p className="education-note">
+                      {item.supervisor && (
+                        <>
+                          Supervisor:{" "}
+                          {item.supervisorUrl ? (
+                            <ExternalLink href={item.supervisorUrl}>
+                              {item.supervisor}
+                            </ExternalLink>
+                          ) : (
+                            item.supervisor
+                          )}
+                        </>
+                      )}
+                      <span>{item.location}</span>
+                    </p>
+                  </div>
+                </article>
+              ))}
             </div>
           </section>
 

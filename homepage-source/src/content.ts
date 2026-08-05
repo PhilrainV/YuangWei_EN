@@ -32,6 +32,18 @@ export type Experience = {
   role: string;
 };
 
+export type Education = {
+  period: string;
+  institution: string;
+  institutionUrl: string;
+  program: string;
+  logo: string;
+  logoAlt: string;
+  supervisor?: string;
+  supervisorUrl?: string;
+  location: string;
+};
+
 export type Profile = {
   name: string;
   chineseName: string;
@@ -54,6 +66,7 @@ export type Profile = {
 
 type AcademicContent = {
   profile?: Profile;
+  education?: Education[];
   publications?: Publication[];
   books?: OutputItem[];
   patents?: OutputItem[];
@@ -76,6 +89,7 @@ function list<T>(value: T[] | undefined): T[] {
 
 export const publications = list(content.publications);
 export const profile = content.profile as Profile;
+export const education = list(content.education);
 export const books = list(content.books);
 export const patents = list(content.patents);
 export const softwareCopyrights = list(content.softwareCopyrights);

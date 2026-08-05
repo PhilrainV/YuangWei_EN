@@ -8,6 +8,7 @@ Edit the small files in `content/`:
 
 - `content/publications.js`: publications
 - `content/profile.js`: bio, research interests, email, affiliation, portrait, and academic links
+- `content/education.js`: education, institution links, logos, degrees, supervisors, and locations
 - `content/books.js`: books
 - `content/patents.js`: patents
 - `content/software-copyrights.js`: software copyrights
