@@ -11,7 +11,7 @@ window.YUANG_WEI_CONTENT.profile = {
   avatar: "images/weiyuang.png",
   avatarAlt: "Portrait of Yuang Wei",
   location: "Wuhan, China",
-  email: "philrain@foxmail.com",
+  email: "philrain.cs@gmail.com",
 
   bio: [
         "I received my Ph.D. in Intelligent Education from the Shanghai Institute of AI for Education at East China Normal University (ECNU), under the supervision of Professor Bo Jiang. I am currently a Lecturer at the Faculty of Artificial Intelligence in Education, Central China Normal University (CCNU). My research focuses on learner modeling, educational large language models, causal modeling, and trustworthy and explainable artificial intelligence in education. I have published more than 20 academic papers.",
