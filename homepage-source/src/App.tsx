@@ -59,9 +59,9 @@ type VisitorStats = {
 };
 
 type ScholarStats = {
-  citedby: number;
-  hindex: number;
-  i10index: number;
+  citedby: number | null;
+  hindex: number | null;
+  i10index: number | null;
   updated?: string;
 };
 
@@ -247,10 +247,9 @@ export default function Home() {
   >("All");
   const [emailCopied, setEmailCopied] = useState(false);
   const [scholarMetrics, setScholarMetrics] = useState<ScholarStats>({
-    citedby: 330,
-    hindex: 11,
-    i10index: 12,
-    updated: "2026-08-02",
+    citedby: null,
+    hindex: null,
+    i10index: null,
   });
 
   useEffect(() => {
@@ -411,15 +410,15 @@ export default function Home() {
             </div>
             <div className="scholar-metrics">
               <div>
-                <strong>{scholarMetrics.citedby}</strong>
+                <strong>{scholarMetrics.citedby ?? "—"}</strong>
                 <span>Citations</span>
               </div>
               <div>
-                <strong>{scholarMetrics.hindex}</strong>
+                <strong>{scholarMetrics.hindex ?? "—"}</strong>
                 <span>h-index</span>
               </div>
               <div>
-                <strong>{scholarMetrics.i10index}</strong>
+                <strong>{scholarMetrics.i10index ?? "—"}</strong>
                 <span>i10-index</span>
               </div>
             </div>

@@ -229,10 +229,10 @@ function T() {
     [l, p] = u.useState("All"),
     [t, d] = u.useState(!1),
     [i, x] = u.useState({
-      citedby: 330,
-      hindex: 11,
-      i10index: 12,
-      updated: "2026-08-02",
+      citedby: null,
+      hindex: null,
+      i10index: null,
+      updated: void 0,
     });
   u.useEffect(() => {
     let s = !0;
@@ -446,19 +446,19 @@ function T() {
                     children: [
                       e.jsxs("div", {
                         children: [
-                          e.jsx("strong", { children: i.citedby }),
+                          e.jsx("strong", { children: i.citedby ?? "—" }),
                           e.jsx("span", { children: "Citations" }),
                         ],
                       }),
                       e.jsxs("div", {
                         children: [
-                          e.jsx("strong", { children: i.hindex }),
+                          e.jsx("strong", { children: i.hindex ?? "—" }),
                           e.jsx("span", { children: "h-index" }),
                         ],
                       }),
                       e.jsxs("div", {
                         children: [
-                          e.jsx("strong", { children: i.i10index }),
+                          e.jsx("strong", { children: i.i10index ?? "—" }),
                           e.jsx("span", { children: "i10-index" }),
                         ],
                       }),
