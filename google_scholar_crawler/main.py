@@ -5,6 +5,7 @@
 Robust Google Scholar stats fetcher for GitHub Actions.
 
 Key features:
+- Uses SerpApi when SERPAPI_KEY is configured
 - Avoids hanging indefinitely (hard timeout)
 - Retries with exponential backoff
 - Keeps previous results on failure (so shields badge won't break)
