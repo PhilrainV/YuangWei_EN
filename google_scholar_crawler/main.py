@@ -138,13 +138,93 @@ def parse_metric_number(text: str) -> int:
     return int(digits)
 
 
+def author_from_profile_html(html: str, scholar_id: str) -> Dict[str, Any]:
+    """Parse the public Google Scholar profile page."""
+    soup = BeautifulSoup(html, "html.parser")
+    name_node = soup.select_one("#gsc_prf_in")
+    rows = soup.select("#gsc_rsb_st tbody tr")
+    metrics: Dict[str, list[int]] = {}
+
+    for row in rows:
+        cells = row.find_all("td")
+        if len(cells) < 2:
+            continue
+        label = cells[0].get_text(" ", strip=True).lower()
+        values = []
+        for cell in cells[1:]:
+            text = cell.get_text(" ", strip=True)
+            if text:
+                values.append(parse_metric_number(text))
+        if values:
+            metrics[label] = values
+
+    citation_key = next((k for k in metrics if k.startswith("citations")), None)
+    if name_node is None or citation_key is None:
+        title = soup.title.get_text(" ", strip=True) if soup.title else "no title"
+        raise RuntimeError(
+            f"Scholar profile markers missing (page title: {title!r}); "
+            "the endpoint may have returned a CAPTCHA."
+        )
+
+    previous = load_json_if_exists(OUT_AUTHOR_JSON)
+    author: Dict[str, Any] = dict(previous) if isinstance(previous, dict) else {}
+    author.update(
+        {
+            "container_type": "Author",
+            "filled": ["basics", "indices", "counts"],
+            "scholar_id": scholar_id,
+            "source": "AUTHOR_PROFILE_PAGE",
+            "name": name_node.get_text(" ", strip=True),
+            "updated": now_str(),
+        }
+    )
+
+    citations = metrics[citation_key]
+    author["citedby"] = citations[0]
+    if len(citations) > 1:
+        author["citedby5y"] = citations[1]
+
+    h_key = next((k for k in metrics if k.startswith("h-index")), None)
+    i10_key = next((k for k in metrics if k.startswith("i10-index")), None)
+    if h_key:
+        author["hindex"] = metrics[h_key][0]
+        if len(metrics[h_key]) > 1:
+            author["hindex5y"] = metrics[h_key][1]
+    if i10_key:
+        author["i10index"] = metrics[i10_key][0]
+        if len(metrics[i10_key]) > 1:
+            author["i10index5y"] = metrics[i10_key][1]
+
+    affiliation = soup.select_one(".gsc_prf_il")
+    if affiliation:
+        author["affiliation"] = affiliation.get_text(" ", strip=True)
+    interests = [
+        item.get_text(" ", strip=True)
+        for item in soup.select(".gsc_prf_inta")
+        if item.get_text(" ", strip=True)
+    ]
+    if interests:
+        author["interests"] = interests
+
+    years = [x.get_text(strip=True) for x in soup.select(".gsc_g_t")]
+    counts = [x.get_text(strip=True) for x in soup.select(".gsc_g_al")]
+    if years and len(years) == len(counts):
+        author["cites_per_year"] = {
+            year: parse_metric_number(count)
+            for year, count in zip(years, counts)
+            if year and count
+        }
+
+    return author
+
+
 def fetch_author_data(author_id: str) -> Dict[str, Any]:
     """
-    Fetch the public profile directly with strict request timeouts.
+    Fetch with bounded HTTP requests, then fall back to a real headless browser.
 
-    A single author profile does not require scholarly's multi-request fill
-    pipeline. Direct parsing is faster and, importantly, cannot leave a GitHub
-    runner blocked for six hours when Scholar stops responding.
+    Google often rejects request-library traffic from cloud runners even when
+    the public profile remains accessible in a browser. Every path has a hard
+    timeout so a scheduled workflow cannot hang for hours.
     """
     scholar_id = normalize_author_id(author_id)
     headers = {
@@ -171,88 +251,43 @@ def fetch_author_data(author_id: str) -> Dict[str, Any]:
                 f"HTTP {response.status_code}, {len(response.content)} bytes"
             )
             response.raise_for_status()
-
-            soup = BeautifulSoup(response.text, "html.parser")
-            name_node = soup.select_one("#gsc_prf_in")
-            rows = soup.select("#gsc_rsb_st tbody tr")
-            metrics: Dict[str, list[int]] = {}
-
-            for row in rows:
-                cells = row.find_all("td")
-                if len(cells) < 2:
-                    continue
-                label = cells[0].get_text(" ", strip=True).lower()
-                values = []
-                for cell in cells[1:]:
-                    text = cell.get_text(" ", strip=True)
-                    if text:
-                        values.append(parse_metric_number(text))
-                if values:
-                    metrics[label] = values
-
-            citation_key = next((k for k in metrics if k.startswith("citations")), None)
-            if name_node is None or citation_key is None:
-                title = soup.title.get_text(" ", strip=True) if soup.title else "no title"
-                raise RuntimeError(
-                    f"Scholar profile markers missing (page title: {title!r}); "
-                    "the endpoint may have returned a CAPTCHA."
-                )
-
-            previous = load_json_if_exists(OUT_AUTHOR_JSON)
-            author: Dict[str, Any] = dict(previous) if isinstance(previous, dict) else {}
-            author.update(
-                {
-                    "container_type": "Author",
-                    "filled": ["basics", "indices", "counts"],
-                    "scholar_id": scholar_id,
-                    "source": "AUTHOR_PROFILE_PAGE",
-                    "name": name_node.get_text(" ", strip=True),
-                    "updated": now_str(),
-                }
-            )
-
-            citations = metrics[citation_key]
-            author["citedby"] = citations[0]
-            if len(citations) > 1:
-                author["citedby5y"] = citations[1]
-
-            h_key = next((k for k in metrics if k.startswith("h-index")), None)
-            i10_key = next((k for k in metrics if k.startswith("i10-index")), None)
-            if h_key:
-                author["hindex"] = metrics[h_key][0]
-                if len(metrics[h_key]) > 1:
-                    author["hindex5y"] = metrics[h_key][1]
-            if i10_key:
-                author["i10index"] = metrics[i10_key][0]
-                if len(metrics[i10_key]) > 1:
-                    author["i10index5y"] = metrics[i10_key][1]
-
-            affiliation = soup.select_one(".gsc_prf_il")
-            if affiliation:
-                author["affiliation"] = affiliation.get_text(" ", strip=True)
-            interests = [
-                item.get_text(" ", strip=True)
-                for item in soup.select(".gsc_prf_inta")
-                if item.get_text(" ", strip=True)
-            ]
-            if interests:
-                author["interests"] = interests
-
-            years = [x.get_text(strip=True) for x in soup.select(".gsc_g_t")]
-            counts = [x.get_text(strip=True) for x in soup.select(".gsc_g_al")]
-            if years and len(years) == len(counts):
-                author["cites_per_year"] = {
-                    year: parse_metric_number(count)
-                    for year, count in zip(years, counts)
-                    if year and count
-                }
-
-            return author
+            return author_from_profile_html(response.text, scholar_id)
         except Exception as exc:
             errors.append(f"{base_url}: {exc!r}")
             print(f"[WARN] Direct endpoint failed: {base_url}: {exc!r}", file=sys.stderr)
 
-    raise RuntimeError("All Scholar profile endpoints failed: " + " | ".join(errors))
+    driver = None
+    try:
+        from selenium import webdriver
+        from selenium.webdriver.chrome.options import Options
+        from selenium.webdriver.support.ui import WebDriverWait
+
+        options = Options()
+        options.add_argument("--headless=new")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--window-size=1440,1200")
+        options.add_argument(f"--user-agent={headers['User-Agent']}")
+
+        driver = webdriver.Chrome(options=options)
+        driver.set_page_load_timeout(30)
+        url = f"https://scholar.google.com/citations?user={scholar_id}&hl=en"
+        print("[INFO] Trying headless Chrome fallback")
+        driver.get(url)
+        WebDriverWait(driver, 20).until(
+            lambda d: d.find_elements("css selector", "#gsc_prf_in")
+            or "not a robot" in d.page_source.lower()
+        )
+        return author_from_profile_html(driver.page_source, scholar_id)
+    except Exception as exc:
+        errors.append(f"headless Chrome: {exc!r}")
+        print(f"[WARN] Headless Chrome failed: {exc!r}", file=sys.stderr)
+    finally:
+        if driver is not None:
+            driver.quit()
+
+    raise RuntimeError("All Scholar profile methods failed: " + " | ".join(errors))
 
 
 def build_shields(author: Dict[str, Any]) -> Dict[str, Any]:
