@@ -33,6 +33,8 @@ from bs4 import BeautifulSoup
 # Configuration (via env vars)
 # -----------------------------
 AUTHOR_ID_ENV = "GOOGLE_SCHOLAR_ID"
+SERPAPI_KEY_ENV = "SERPAPI_KEY"
+SERPAPI_URL = "https://serpapi.com/search.json"
 RESULTS_DIR = os.getenv("RESULTS_DIR", "results")
 OUT_AUTHOR_JSON = os.path.join(RESULTS_DIR, "gs_data.json")
 OUT_SHIELDS_JSON = os.path.join(RESULTS_DIR, "gs_data_shieldsio.json")
@@ -218,6 +220,163 @@ def author_from_profile_html(html: str, scholar_id: str) -> Dict[str, Any]:
     return author
 
 
+
+def _metric_values(
+    table: list[Dict[str, Any]], aliases: set[str], fallback_index: int
+) -> Dict[str, Any]:
+    """Find one row in SerpApi's localized metric table."""
+    for row in table:
+        if not isinstance(row, dict):
+            continue
+        for key, values in row.items():
+            normalized = re.sub(r"[^a-z0-9]", "", key.lower())
+            if normalized in aliases and isinstance(values, dict):
+                return values
+
+    if fallback_index < len(table):
+        row = table[fallback_index]
+        if isinstance(row, dict) and row:
+            values = next(iter(row.values()))
+            if isinstance(values, dict):
+                return values
+    return {}
+
+
+def _all_and_recent(values: Dict[str, Any]) -> tuple[int | None, int | None]:
+    all_value = values.get("all")
+    recent_value = next(
+        (value for key, value in values.items() if key != "all"),
+        None,
+    )
+
+    def to_int(value: Any) -> int | None:
+        if value is None:
+            return None
+        return parse_metric_number(str(value))
+
+    return to_int(all_value), to_int(recent_value)
+
+
+def author_from_serpapi(payload: Dict[str, Any], scholar_id: str) -> Dict[str, Any]:
+    """Convert SerpApi's Google Scholar Author response to the site's schema."""
+    if payload.get("error"):
+        raise RuntimeError(f"SerpApi error: {payload['error']}")
+
+    cited_by = payload.get("cited_by")
+    if not isinstance(cited_by, dict):
+        raise RuntimeError("SerpApi response is missing cited_by data")
+
+    table = cited_by.get("table")
+    if not isinstance(table, list) or not table:
+        raise RuntimeError("SerpApi response is missing the metrics table")
+
+    citations = _metric_values(table, {"citations"}, 0)
+    h_index = _metric_values(table, {"hindex", "indiceh"}, 1)
+    i10_index = _metric_values(table, {"i10index", "indicei10"}, 2)
+    citedby, citedby_recent = _all_and_recent(citations)
+    hindex, hindex_recent = _all_and_recent(h_index)
+    i10index, i10index_recent = _all_and_recent(i10_index)
+
+    if citedby is None:
+        raise RuntimeError("SerpApi response has no total citation count")
+
+    previous = load_json_if_exists(OUT_AUTHOR_JSON)
+    author: Dict[str, Any] = dict(previous) if isinstance(previous, dict) else {}
+    author_details = payload.get("author")
+    if not isinstance(author_details, dict):
+        author_details = {}
+
+    author.update(
+        {
+            "container_type": "Author",
+            "filled": ["basics", "indices", "counts"],
+            "scholar_id": scholar_id,
+            "source": "SERPAPI",
+            "updated": now_str(),
+            "citedby": citedby,
+        }
+    )
+
+    if author_details.get("name"):
+        author["name"] = author_details["name"]
+    if author_details.get("affiliations"):
+        author["affiliation"] = author_details["affiliations"]
+
+    interests = author_details.get("interests")
+    if isinstance(interests, list):
+        interest_titles = [
+            item.get("title") if isinstance(item, dict) else str(item)
+            for item in interests
+        ]
+        interest_titles = [title for title in interest_titles if title]
+        if interest_titles:
+            author["interests"] = interest_titles
+
+    optional_metrics = {
+        "citedby5y": citedby_recent,
+        "hindex": hindex,
+        "hindex5y": hindex_recent,
+        "i10index": i10index,
+        "i10index5y": i10index_recent,
+    }
+    for key, value in optional_metrics.items():
+        if value is not None:
+            author[key] = value
+
+    graph = cited_by.get("graph")
+    if isinstance(graph, list):
+        cites_per_year = {}
+        for point in graph:
+            if not isinstance(point, dict):
+                continue
+            year = point.get("year")
+            count = point.get("citations")
+            if year is not None and count is not None:
+                cites_per_year[str(year)] = parse_metric_number(str(count))
+        if cites_per_year:
+            author["cites_per_year"] = cites_per_year
+
+    return author
+
+
+def fetch_author_from_serpapi(
+    author_id: str, api_key: str
+) -> Dict[str, Any]:
+    """Fetch through SerpApi without ever printing the private key."""
+    try:
+        response = requests.get(
+            SERPAPI_URL,
+            params={
+                "engine": "google_scholar_author",
+                "author_id": author_id,
+                "hl": "en",
+                "api_key": api_key,
+            },
+            timeout=(10, REQUEST_TIMEOUT_S),
+        )
+    except requests.RequestException as exc:
+        safe_message = str(exc).replace(api_key, "***")
+        raise RuntimeError(
+            f"SerpApi request failed ({type(exc).__name__}): {safe_message}"
+        ) from None
+
+    if response.status_code != 200:
+        message = ""
+        try:
+            message = str(response.json().get("error", ""))
+        except (ValueError, AttributeError):
+            pass
+        suffix = f": {message}" if message else ""
+        raise RuntimeError(f"SerpApi returned HTTP {response.status_code}{suffix}")
+
+    try:
+        payload = response.json()
+    except ValueError:
+        raise RuntimeError("SerpApi returned invalid JSON") from None
+
+    return author_from_serpapi(payload, author_id)
+
+
 def fetch_author_data(author_id: str) -> Dict[str, Any]:
     """
     Fetch with bounded HTTP requests, then fall back to a real headless browser.
@@ -227,6 +386,26 @@ def fetch_author_data(author_id: str) -> Dict[str, Any]:
     timeout so a scheduled workflow cannot hang for hours.
     """
     scholar_id = normalize_author_id(author_id)
+    errors = []
+    api_key = os.getenv(SERPAPI_KEY_ENV, "").strip()
+
+    if api_key:
+        print("[INFO] Trying SerpApi Google Scholar Author API")
+        try:
+            return fetch_author_from_serpapi(scholar_id, api_key)
+        except Exception as exc:
+            safe_message = str(exc).replace(api_key, "***")
+            errors.append(f"SerpApi: {type(exc).__name__}: {safe_message}")
+            print(
+                f"[WARN] SerpApi failed: {type(exc).__name__}: {safe_message}",
+                file=sys.stderr,
+            )
+    else:
+        print(
+            f"[WARN] {SERPAPI_KEY_ENV} is not configured; using direct fallbacks.",
+            file=sys.stderr,
+        )
+
     headers = {
         "User-Agent": (
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -235,8 +414,6 @@ def fetch_author_data(author_id: str) -> Dict[str, Any]:
         ),
         "Accept-Language": "en-US,en;q=0.9",
     }
-    errors = []
-
     for base_url in PROFILE_URLS:
         try:
             response = requests.get(
