@@ -228,12 +228,7 @@ function T() {
   const [a, o] = u.useState(!1),
     [l, p] = u.useState("All"),
     [t, d] = u.useState(!1),
-    [i, x] = u.useState({
-      citedby: null,
-      hindex: null,
-      i10index: null,
-      updated: void 0,
-    });
+    [i, x] = u.useState({ citedby: null, hindex: null, i10index: null });
   u.useEffect(() => {
     let s = !0;
     return (
