@@ -1,4 +1,5 @@
-# from scholarly import scholarly
+# import requests
+from bs4 import BeautifulSoup
 # import jsonpickle
 # import json
 # from datetime import datetime
@@ -41,6 +42,7 @@ from __future__ import annotations
 import json
 import os
 import random
+import re
 import signal
 import sys
 import time
@@ -63,12 +65,18 @@ OUT_SHIELDS_JSON = os.path.join(RESULTS_DIR, "gs_data_shieldsio.json")
 HARD_TIMEOUT_S = int(os.getenv("HARD_TIMEOUT_S", "240"))  # 4 minutes by default
 
 # Retry settings
-MAX_TRIES = int(os.getenv("MAX_TRIES", "4"))
+MAX_TRIES = int(os.getenv("MAX_TRIES", "2"))
 BASE_BACKOFF_S = float(os.getenv("BASE_BACKOFF_S", "2.0"))
 MAX_BACKOFF_S = float(os.getenv("MAX_BACKOFF_S", "45.0"))
 
 # Whether to fetch publications (expensive / higher ban risk)
 FETCH_PUBLICATIONS = os.getenv("FETCH_PUBLICATIONS", "0") == "1"
+REQUEST_TIMEOUT_S = int(os.getenv("REQUEST_TIMEOUT_S", "20"))
+PROFILE_URLS = [
+    "https://scholar.google.com/citations",
+    "https://scholar.googleusercontent.com/citations",
+    "https://scholar.google.co.uk/citations",
+]
 
 # Sections to fill (keep minimal by default)
 SECTIONS_MINIMAL = ["basics", "indices", "counts"]
@@ -139,31 +147,136 @@ def now_str() -> str:
 # -----------------------------
 # Fetch logic
 # -----------------------------
+def normalize_author_id(value: str) -> str:
+    """Accept either a bare Scholar ID or a copied profile URL/query string."""
+    value = value.strip()
+    if "user=" in value:
+        value = value.split("user=", 1)[1]
+    return value.split("&", 1)[0].split("?", 1)[0].strip()
+
+
+def parse_metric_number(text: str) -> int:
+    digits = re.sub(r"[^0-9]", "", text)
+    if not digits:
+        raise ValueError(f"No numeric value found in {text!r}")
+    return int(digits)
+
+
 def fetch_author_data(author_id: str) -> Dict[str, Any]:
     """
-    Fetch scholar author data with scholarly.
-    May raise exceptions; caller handles retry/timeout.
+    Fetch the public profile directly with strict request timeouts.
+
+    A single author profile does not require scholarly's multi-request fill
+    pipeline. Direct parsing is faster and, importantly, cannot leave a GitHub
+    runner blocked for six hours when Scholar stops responding.
     """
-    author: Dict[str, Any] = scholarly.search_author_id(author_id)
+    scholar_id = normalize_author_id(author_id)
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/124.0 Safari/537.36"
+        ),
+        "Accept-Language": "en-US,en;q=0.9",
+    }
+    errors = []
 
-    sections = SECTIONS_WITH_PUBS if FETCH_PUBLICATIONS else SECTIONS_MINIMAL
-    scholarly.fill(author, sections=sections)
+    for base_url in PROFILE_URLS:
+        try:
+            response = requests.get(
+                base_url,
+                params={"user": scholar_id, "hl": "en"},
+                headers=headers,
+                timeout=(10, REQUEST_TIMEOUT_S),
+                allow_redirects=True,
+            )
+            print(
+                f"[INFO] Profile endpoint {base_url}: "
+                f"HTTP {response.status_code}, {len(response.content)} bytes"
+            )
+            response.raise_for_status()
 
-    # Normalize output fields
-    author["updated"] = now_str()
+            soup = BeautifulSoup(response.text, "html.parser")
+            name_node = soup.select_one("#gsc_prf_in")
+            rows = soup.select("#gsc_rsb_st tbody tr")
+            metrics: Dict[str, list[int]] = {}
 
-    # publications could be absent if not fetched or if fill failed partially
-    pubs = author.get("publications", [])
-    if isinstance(pubs, list):
-        # Key by author_pub_id when available (more stable for diffs)
-        keyed = {}
-        for p in pubs:
-            if isinstance(p, dict) and "author_pub_id" in p:
-                keyed[p["author_pub_id"]] = p
-        if keyed:
-            author["publications"] = keyed
+            for row in rows:
+                cells = row.find_all("td")
+                if len(cells) < 2:
+                    continue
+                label = cells[0].get_text(" ", strip=True).lower()
+                values = []
+                for cell in cells[1:]:
+                    text = cell.get_text(" ", strip=True)
+                    if text:
+                        values.append(parse_metric_number(text))
+                if values:
+                    metrics[label] = values
 
-    return author
+            citation_key = next((k for k in metrics if k.startswith("citations")), None)
+            if name_node is None or citation_key is None:
+                title = soup.title.get_text(" ", strip=True) if soup.title else "no title"
+                raise RuntimeError(
+                    f"Scholar profile markers missing (page title: {title!r}); "
+                    "the endpoint may have returned a CAPTCHA."
+                )
+
+            previous = load_json_if_exists(OUT_AUTHOR_JSON)
+            author: Dict[str, Any] = dict(previous) if isinstance(previous, dict) else {}
+            author.update(
+                {
+                    "container_type": "Author",
+                    "filled": ["basics", "indices", "counts"],
+                    "scholar_id": scholar_id,
+                    "source": "AUTHOR_PROFILE_PAGE",
+                    "name": name_node.get_text(" ", strip=True),
+                    "updated": now_str(),
+                }
+            )
+
+            citations = metrics[citation_key]
+            author["citedby"] = citations[0]
+            if len(citations) > 1:
+                author["citedby5y"] = citations[1]
+
+            h_key = next((k for k in metrics if k.startswith("h-index")), None)
+            i10_key = next((k for k in metrics if k.startswith("i10-index")), None)
+            if h_key:
+                author["hindex"] = metrics[h_key][0]
+                if len(metrics[h_key]) > 1:
+                    author["hindex5y"] = metrics[h_key][1]
+            if i10_key:
+                author["i10index"] = metrics[i10_key][0]
+                if len(metrics[i10_key]) > 1:
+                    author["i10index5y"] = metrics[i10_key][1]
+
+            affiliation = soup.select_one(".gsc_prf_il")
+            if affiliation:
+                author["affiliation"] = affiliation.get_text(" ", strip=True)
+            interests = [
+                item.get_text(" ", strip=True)
+                for item in soup.select(".gsc_prf_inta")
+                if item.get_text(" ", strip=True)
+            ]
+            if interests:
+                author["interests"] = interests
+
+            years = [x.get_text(strip=True) for x in soup.select(".gsc_g_t")]
+            counts = [x.get_text(strip=True) for x in soup.select(".gsc_g_al")]
+            if years and len(years) == len(counts):
+                author["cites_per_year"] = {
+                    year: parse_metric_number(count)
+                    for year, count in zip(years, counts)
+                    if year and count
+                }
+
+            return author
+        except Exception as exc:
+            errors.append(f"{base_url}: {exc!r}")
+            print(f"[WARN] Direct endpoint failed: {base_url}: {exc!r}", file=sys.stderr)
+
+    raise RuntimeError("All Scholar profile endpoints failed: " + " | ".join(errors))
 
 
 def build_shields(author: Dict[str, Any]) -> Dict[str, Any]:
