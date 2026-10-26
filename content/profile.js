@@ -15,7 +15,7 @@ window.YUANG_WEI_CONTENT.profile = {
 
   bio: [
         "I received my Ph.D. in Computer Science from the Shanghai Institute of AI for Education at East China Normal University (ECNU), under the supervision of Professor Bo Jiang. I am currently a Lecturer at the Faculty of Artificial Intelligence in Education, Central China Normal University (CCNU). My research focuses on learner modeling, educational large language models, causal modeling, and trustworthy and explainable artificial intelligence in education. I have published more than 20 academic papers.",
-        "I serve as a reviewer for Computers & Education, Education and Information Technologies, Information Processing & Management, IEEE Transactions on Emerging Topics in Computing, the International Journal of Artificial Intelligence in Education, Knowledge-Based Systems, and Humanities & Social Sciences Communications. I have also reviewed submissions for international conferences including NeurIPS, AAAI, KDD, ICASSP, AIED, and EDM.",
+        "I serve as a reviewer for Computers & Education, Education and Information Technologies, Information Processing & Management, IEEE Transactions on Emerging Topics in Computing, the International Journal of Artificial Intelligence in Education, Knowledge-Based Systems, and Humanities & Social Sciences Communications. I have also reviewed submissions for international conferences including NeurIPS, CHI, AAAI, KDD, ICASSP, AIED, and EDM.",
         "If you are interested in my research, please feel free to get in touch. I would be delighted to exchange ideas and explore potential research collaborations.",
   ],
 
